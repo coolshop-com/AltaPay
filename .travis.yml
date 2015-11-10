@@ -1,0 +1,29 @@
+language: python
+
+sudo: false
+
+env:
+  - TOXENV=py27
+  - TOXENV=py33
+  - TOXENV=py34
+  - TOXENV=pypy
+  - TOXENV=pypy3
+
+matrix:
+  include:
+    - python: 3.5
+      env:
+      - TOXENV=py35
+
+install:
+  - pip install tox flake8 pep8-naming isort codecov
+
+before_script:
+  - isort -rc -cs --check-only altapay tests
+  - flake8 altapay tests
+
+script:
+  - tox
+
+after_success:
+  - codecov -e TOXENV
