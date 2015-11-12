@@ -1,7 +1,7 @@
 .. image:: https://travis-ci.org/coolshop-com/AltaPay.svg
     :target: https://travis-ci.org/coolshop-com/AltaPay
 .. image:: https://codecov.io/github/coolshop-com/AltaPay/coverage.svg?branch=master
-    :target: https://codecov.io/github/coolshop-com/AltaPay?branch=master
+    :target: https://codecov.io/github/coolshop-com/AltaPay?branch=master
 
 This is an unofficial Python SDK for AltaPay (formerly Pensio), https://altapay.com/. The SDK is maintained by Coolshop.com, https://www.coolshop.com/.
 
