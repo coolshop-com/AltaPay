@@ -10,6 +10,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   api
+   resource
+   payment
+   exceptions
+
 
 
 Indices and tables

@@ -2,26 +2,39 @@ from setuptools import setup, find_packages
 
 
 def get_version():
-    return __import__('altapay').VERSION
+    return __import__('altapay').__version__
+
+
+def get_url():
+    return __import__('altapay').__github_url__
 
 
 version = get_version()
+github_url = get_url()
 
 with open('README.rst', 'r') as f:
-    long_description = f.read()
+    readme = f.read()
+
+with open('CHANGELOG.rst', 'r') as f:
+    changelog = f.read()
+
+requires = [
+    'requests',
+    'six'
+]
 
 
 setup(
     name='altapay',
     version=version,
-    url='https://github.com/coolshop-com/AltaPay',
+    url=github_url,
     license='MIT',
     description='Unofficial Python SDK for AltaPay (formerly Pensio).',
-    long_description=long_description,
+    long_description=readme + '\n\n' + changelog,
     author='Coolshop.com',
     author_email='altapaysdk@coolshop.com',
     packages=find_packages(where='.', exclude=('tests*',)),
-    install_requires=[],
+    install_requires=requires,
     classifiers=[
         'Development Status :: 1 - Planning',
         'Environment :: Web Environment',

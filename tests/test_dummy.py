@@ -5,5 +5,5 @@ from .test_cases import TestCase
 
 class VersionTest(TestCase):
     def test_module_version(self):
-        version = __import__('altapay').VERSION
+        version = __import__('altapay').__version__
         self.assertGreater(len(version), 0)

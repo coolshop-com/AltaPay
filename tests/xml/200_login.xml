@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<APIResponse version="20150526">
+    <Header>
+        <Date>2015-12-12T21:35:23+01:00</Date>
+        <Path>API/login</Path>
+        <ErrorCode>0</ErrorCode>
+        <ErrorMessage></ErrorMessage>
+    </Header>
+    <Body>
+        <Result>OK</Result>
+    </Body>
+</APIResponse>

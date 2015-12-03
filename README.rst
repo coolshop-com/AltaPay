@@ -7,11 +7,20 @@ This is an unofficial Python SDK for AltaPay (formerly Pensio), https://altapay.
 
 **This is an incomplete, in-development version of the SDK. Do not use unless you know what you are doing**
 
+Documentation
+=============
+`Documentation is available at Read the Docs <http://altapay.readthedocs.org/en/latest/>`_.
+
 Requirements
 ============
-- Python (2.7, 3.3, 3.4, 3.5, pypy, pypy3)
+- Python (2.7, 3.3, 3.4, 3.5)
 
 Other versions of Python may also be supported, but these are the only versions we test against.
+
+Dependencies
+++++++++++++
+- requests
+- six
 
 Installation
 ============
@@ -21,16 +30,12 @@ Getting Started
 ===============
 To come
 
-Documentation
-=============
-To come
-
 Contributing
 ============
 To come
 
 Running the Tests
------------------
++++++++++++++++++
 First of all, have `tox <http://tox.readthedocs.org/en/latest/>`_ installed on your system. System-wide is probably the better choice. Once you have tox installed, simply run:
 
 .. code:: python

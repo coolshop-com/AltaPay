@@ -6,4 +6,19 @@ test case classes, namely TestCase and SkipTest. At some point in the future,
 this module might expose different test cases with additional specific AltaPay
 functionality.
 """
+import os
 from unittest import SkipTest, TestCase  # NOQA
+from xml.etree import ElementTree
+
+from altapay import utils
+
+
+class TestCase(TestCase):
+    def load_dict_response(self, xml_response):
+        return utils.etree_to_dict(ElementTree.XML(xml_response))
+
+    def load_xml_response(self, filename):
+        path = os.path.join(os.path.dirname(__file__), 'xml', filename)
+        with open(path, 'r') as f:
+            return f.read()
+            return utils.etree_to_dict(ElementTree.XML(f.read()))
