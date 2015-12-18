@@ -8,7 +8,6 @@ def get_version():
 def get_url():
     return __import__('altapay').__github_url__
 
-
 version = get_version()
 github_url = get_url()
 
@@ -22,7 +21,6 @@ requires = [
     'requests',
     'six'
 ]
-
 
 setup(
     name='altapay',
