@@ -3,7 +3,7 @@ include README.rst
 include setup.py
 include CHANGELOG.rst
 recursive-include docs *
-resursive-include tests/xml *.xml
+recursive-include tests/xml *.xml
 
 prune docs/_build
 recursive-exclude * __pycache__
