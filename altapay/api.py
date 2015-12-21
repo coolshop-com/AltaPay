@@ -61,8 +61,8 @@ class API(object):
         """
         Validates the account name and password against the AltaPay service.
         This method should always be called before attempting any other calls,
-        and is automatically called once the `API` object is instantiated,
-        unless explictly disabled.
+        and is automatically called once the :py:class:`altapay.api.API`
+        object is instantiated, unless explictly disabled.
 
         Raises:
             UnauthorizedAccessError: if the supplied credentials are not valid.
@@ -84,8 +84,8 @@ class API(object):
         not require valid API credentials, and as such can only be used to
         assert if AltaPay is responding.
 
-        Returns:
-            `True` if a valid response is returned, otherwise `False`.
+        :rtype: :samp:`True` if a valid response is returned, otherwise
+            :samp:`False`.
         """
         return self.get('API/index')
 
@@ -125,7 +125,7 @@ class API(object):
 
     def get(self, resource, parameters={}, headers={}):
         """
-        Perform a GET request on the `Resource`.
+        Perform a GET HTTP request on a resource.
 
         :arg resource: the resource to GET
         :arg parameters: a dictionary of GET parameters for the resource
@@ -133,7 +133,7 @@ class API(object):
             default headers.
 
         :returns:
-            A response from the AltaPay service as an `OrderedDict`.
+            A response from the AltaPay service as a :samp:`dict`.
 
         :raises:
             :UnauthorizedAccessError: If the supplied credentials are not
@@ -146,6 +146,3 @@ class API(object):
         return self._request(
             urljoin(self.url, resource), 'GET', params=parameters,
             headers=headers or self._headers())
-
-    def post(self, resource, payload=None, headers={}):
-        raise NotImplementedError

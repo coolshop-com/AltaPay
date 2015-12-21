@@ -10,6 +10,8 @@ import os
 from unittest import SkipTest, TestCase  # NOQA
 from xml.etree import ElementTree
 
+from six.moves.urllib.parse import urljoin
+
 from altapay import utils
 
 
@@ -22,3 +24,6 @@ class TestCase(TestCase):
         with open(path, 'r') as f:
             return f.read()
             return utils.etree_to_dict(ElementTree.XML(f.read()))
+
+    def get_api_url(self, resource):
+        return urljoin(self.api.url, resource)

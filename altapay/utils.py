@@ -5,6 +5,13 @@ from collections import defaultdict
 
 
 def to_pythonic_name(name):
+    """
+    Create a Pythonic version of a string.
+
+    :arg name: string to build a Pythonic version of.
+
+    :rtype: string
+    """
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 

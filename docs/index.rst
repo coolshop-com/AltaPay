@@ -5,7 +5,28 @@ This is an unofficial Python SDK for AltaPay (formerly Pensio), https://altapay.
 
 **This is an incomplete, in-development version of the SDK. Do not use unless you know what you are doing**
 
-Contents:
+The AltaPay Python SDK attempts to consume the AltaPay API in a clean and Pythonic way, without getting in your way. As a result, you will often find yourself thinking that the API is similar, but has been changed ever so slightly to make it easier for you to use.
+
+As a simple example, once you have your API credentials and a terminal, it is very easy to create a payment in the test environment and get a redirect URL to the payment page.
+
+.. code:: python
+
+    >>> api = API(mode='test', account='login', password='password')
+    >>> payment = Payment(api=api)
+    >>> payment.create('Test Terminal', 1234567, 13.95, 'EUR')
+    >>> payment.success
+    True
+    >>> print(payment.url)
+    'https://...'
+
+Guide
++++++
+
+To come
+
+
+API Documentation
++++++++++++++++++
 
 .. toctree::
    :maxdepth: 2
@@ -16,9 +37,8 @@ Contents:
    exceptions
 
 
-
 Indices and tables
-==================
+++++++++++++++++++
 
 * :ref:`genindex`
 * :ref:`modindex`

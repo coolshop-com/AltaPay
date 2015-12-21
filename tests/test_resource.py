@@ -38,6 +38,11 @@ class ResponseTest(TestCase):
         resource.__header__['error'] = error
         self.assertEqual(resource.error, error)
 
+    def test_attribute_does_not_exist(self):
+        resource = Resource()
+        with self.assertRaises(AttributeError):
+            resource.notvalid
+
     def test_success(self):
         resource = Resource()
         self.assertEqual(resource.success, True)
@@ -56,3 +61,13 @@ class ResponseTest(TestCase):
         response = {'not': {'valid': {'altapay': {'response': None}}}}
         with self.assertRaises(ValueError):
             Resource.create_from_response(response)
+
+    def test_merge_response_invalid(self):
+        response = {
+            'notcorrect': {
+                'test': 1
+            }
+        }
+        resource = Resource()
+        with self.assertRaises(ValueError):
+            resource.merge_response(response)
