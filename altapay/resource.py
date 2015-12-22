@@ -9,8 +9,7 @@ from . import utils
 
 class Resource(object):
     """
-    Base class that maps an XML document from AltaPay into a Python like
-    representation.
+    Base class that maps an AltaPay response into a Python like representation.
     """
     def __init__(self, version=None, header=None, body=None, api=None):
         self.__dict__['api'] = api  # TODO: Allow for global?
@@ -23,6 +22,18 @@ class Resource(object):
 
     @classmethod
     def create_from_response(cls, response):
+        """
+        Instantiate a new :py:class:`altapay.Resource` object from
+        a response.
+
+        :arg response: a response of type :samp:`dict`. The response most
+            conform to the AltaPay response format, which means it must carry
+            four keys called :samp:`@version`, :samp:`APIResponse`,
+            :samp:`Header` and :samp:`Body`.
+
+        :rtype: a new version object of type
+            :py:class:`altapay.Resource`.
+        """
         try:
             api_response = response['APIResponse']
             header = api_response['Header']

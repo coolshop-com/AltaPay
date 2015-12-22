@@ -1,10 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-import unittest
-
 import responses
-from altapay import exceptions
-from altapay.api import API
+from altapay import API, exceptions
 
 from .test_cases import TestCase
 
@@ -15,9 +12,6 @@ class APITest(TestCase):
     def setUp(self):
         self.api = API(mode='test', auto_login=False)
 
-    # Index is listed as being callable without authentication, but this seems
-    # to not be the case. AltaPay has been notified.
-    @unittest.skip
     def test_index_successful(self):
         self.assertEqual(self.api.index().success, True)
 
@@ -79,4 +73,13 @@ class APITest(TestCase):
             body='', status=402, content_type='application/xml')
         with self.assertRaises(exceptions.ResponseStatusError):
             self.api._request(
-                self.get_api_url('API/notReal'), 'GET', params={}, headers={})
+                self.get_api_url('API/notReal'), 'GET')
+
+    @responses.activate
+    def test_http_response_code_500(self):
+        responses.add(
+            responses.GET, self.get_api_url('API/notReal'),
+            body='', status=500, content_type='application/xml')
+        with self.assertRaises(exceptions.ServerError):
+            self.api._request(
+                self.get_api_url('API/notReal'), 'GET')

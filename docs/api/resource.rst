@@ -1,9 +1,9 @@
-.. _resource:
+.. _api-resource:
 
 Resource
 ========
 
-.. py:module:: altapay.resource
+.. py:module:: altapay
 
 .. autoclass:: Resource
     :members:

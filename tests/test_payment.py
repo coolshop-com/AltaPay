@@ -1,8 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import responses
-from altapay.api import API
-from altapay.payment import Payment
+from altapay import API, Payment
 
 from .test_cases import TestCase
 

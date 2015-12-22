@@ -1,12 +1,20 @@
+import re
+
 from setuptools import setup, find_packages
 
 
 def get_version():
-    return __import__('altapay').__version__
+    with open('altapay/__init__.py') as f:
+        return re.search(
+            r'^__version__\s*=\s*[\'"]([^\']*)[\'"]', f.read(),
+            re.MULTILINE).group(1)
 
 
 def get_url():
-    return __import__('altapay').__github_url__
+    with open('altapay/__init__.py') as f:
+        return re.search(
+            r'^__github_url__\s*=\s*[\'"]([^\']*)[\'"]', f.read(),
+            re.MULTILINE).group(1)
 
 version = get_version()
 github_url = get_url()

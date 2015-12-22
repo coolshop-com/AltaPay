@@ -1,7 +1,9 @@
+.. _api-api:
+
 API
 ===
 
-.. py:module:: altapay.api
+.. py:module:: altapay
 
 .. autoclass:: API
     :members:

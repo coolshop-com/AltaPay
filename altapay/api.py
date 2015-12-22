@@ -74,9 +74,9 @@ class API(object):
             self._is_authenticated = True
             return
 
-        raise exceptions.UnauthorizedAccessError(
-            'Credentials could not be validated against the AltaPay '
-            'service.')
+        # Nothing at this point is intentional; if the login was not
+        # successful, the HTTP response code will be 401 and result in an
+        # UnauthorizedError from _response()
 
     def index(self):
         """
@@ -87,7 +87,7 @@ class API(object):
         :rtype: :samp:`True` if a valid response is returned, otherwise
             :samp:`False`.
         """
-        return self.get('API/index')
+        return Resource.create_from_response(self.get('API/index'))
 
     def _headers(self):
         return {
@@ -119,6 +119,10 @@ class API(object):
             raise exceptions.UnauthorizedAccessError(
                 'Credentials could not be validated against the AltaPay '
                 'service.')
+        elif 500 <= status <= 599:
+            raise exceptions.ServerError(
+                'AltaPay service server error. Response code was: {}'
+                .format(status))
 
         raise exceptions.ResponseStatusError(
             'Response code not allowed: {status}'.format(status=status))
@@ -144,5 +148,6 @@ class API(object):
 
         """
         return self._request(
-            urljoin(self.url, resource), 'GET', params=parameters,
+            urljoin(self.url, resource), 'GET',
+            params=utils.http_build_query(parameters),
             headers=headers or self._headers())

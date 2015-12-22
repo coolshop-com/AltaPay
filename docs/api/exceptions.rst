@@ -1,4 +1,4 @@
-.. _exceptions:
+.. _api-exceptions:
 
 Exceptions
 ==========

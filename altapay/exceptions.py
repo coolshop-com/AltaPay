@@ -24,3 +24,9 @@ class ResponseStatusError(AltaPayException):
     the expected response status code.
     """
     pass
+
+
+class ServerError(AltaPayException):
+    """
+    Raised when an error in the 500 range is returned from the AltaPay service.
+    """

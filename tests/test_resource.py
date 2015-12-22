@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from altapay.resource import Resource
+from altapay import Resource
 
 from .test_cases import TestCase
 

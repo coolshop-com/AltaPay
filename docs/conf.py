@@ -32,6 +32,7 @@ import shlex
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'alabaster'
 ]
 
 sys.path.insert(0, os.path.join(os.path.abspath('..')))
@@ -118,7 +119,18 @@ html_theme_options = {
     'github_user': 'coolshop-com',
     'github_repo': 'AltaPay',
     'github_button': True,
-    'travis_button': True
+    'description': (
+        'This is an unofficial Python SDK for AltaPay (formerly Pensio).')
+}
+
+html_sidebars = {
+    '**': [
+        'about.html',
+        'navigation.html',
+        'relations.html',
+        'searchbox.html',
+        'donate.html',
+    ]
 }
 
 # Theme options are theme-specific and customize the look and feel of a theme
