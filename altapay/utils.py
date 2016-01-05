@@ -21,6 +21,12 @@ def to_pythonic_name(name):
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
 
+def to_pythonic_dict(dictionary):
+    return {
+        to_pythonic_name(k): v for k, v in dictionary.items()
+    }
+
+
 def etree_to_dict(tree):
     """
     *Note: This is an internal API and may be changed without notice.*

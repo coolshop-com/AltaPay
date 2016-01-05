@@ -34,9 +34,20 @@ class ResponseTest(TestCase):
 
     def test_error(self):
         resource = Resource()
-        error = {'abc': 'abc'}
-        resource.__header__['error'] = error
-        self.assertEqual(resource.error, error)
+        resource.merge_response({
+            'APIResponse': {
+                '@version': 0,
+                'Header': {
+                    'ErrorCode': 0,
+                    'ErrorMessage': ''
+                },
+                'Body': {}
+            }})
+        self.assertEqual(
+            resource.error, {
+                'code': 0,
+                'message': ''
+            })
 
     def test_attribute_does_not_exist(self):
         resource = Resource()
@@ -46,7 +57,15 @@ class ResponseTest(TestCase):
     def test_success(self):
         resource = Resource()
         self.assertEqual(resource.success, True)
-        resource.__header__['error'] = {'abc': 'abc'}
+        resource.merge_response({
+            'APIResponse': {
+                '@version': 0,
+                'Header': {
+                    'ErrorCode': 1,
+                    'ErrorMessage': 'Some Error Message'
+                },
+                'Body': {}
+            }})
         self.assertEqual(resource.success, False)
 
     def test_create_from_response(self):

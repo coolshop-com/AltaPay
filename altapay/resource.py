@@ -36,7 +36,7 @@ class Resource(object):
         """
         try:
             api_response = response['APIResponse']
-            header = api_response['Header']
+            header = utils.to_pythonic_dict(api_response['Header'])
             body = api_response['Body']
             return cls(
                 version=api_response['@version'], header=header, body=body)
@@ -72,15 +72,22 @@ class Resource(object):
             api_response = response['APIResponse']
             super(Resource, self).__setattr__(
                 'version', api_response['@version'])
-            super(Resource, self).__setattr__('header', api_response['Header'])
+            super(Resource, self).__setattr__(
+                '__header__', utils.to_pythonic_dict(api_response['Header']))
             self.merge(api_response['Body'] or {})
         except KeyError:
             raise ValueError('XML document was not in the expected format')
 
     @property
     def error(self):
-        return self.__header__.get('error', {})
+        error_code = int(self.__header__.get('error_code', 0))
+        error_message = self.__header__.get('error_message', '')
+
+        return {
+            'code': error_code,
+            'message': error_message
+        }
 
     @property
     def success(self):
-        return len(self.error) == 0
+        return self.error['code'] == 0
