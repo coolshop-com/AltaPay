@@ -26,8 +26,7 @@ Guide
 
    guide/introduction
    guide/create_payment
-.. guide/backoffice
-.. guide/logging
+   guide/transactions
 
 
 API Documentation
@@ -39,6 +38,7 @@ API Documentation
    api/api
    api/resource
    api/payment
+   api/transaction
    api/exceptions
    api/utils
 

@@ -4,7 +4,13 @@ Change Log
 0.1.dev2 (2015-01-XX)
 +++++++++++++++++++++
 
-- NYI
+**Features**
+
+- Added ``altapay.api.Transaction`` and the ability to find a transaction by its transaction ID in the AltaPay service
+
+**Bugfixes**
+
+- Fixed a bug where specifying a non-existing terminal while creating an ``altapay.Payment`` object would result in ``altapay.Payment.success`` returning ``True``
 
 0.1.dev1 (2015-01-05)
 +++++++++++++++++++++

@@ -1,4 +1,4 @@
-.. _api_payment:
+.. _api-payment:
 
 Payment
 =======

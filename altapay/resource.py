@@ -3,16 +3,12 @@ from __future__ import absolute_import, unicode_literals
 from . import utils
 
 
-# TODO: Could we send a unique request ID through the header? If AltaPay
-# logs this, it would mean that you could trace a specific request easily
-
-
 class Resource(object):
     """
     Base class that maps an AltaPay response into a Python like representation.
     """
     def __init__(self, version=None, header=None, body=None, api=None):
-        self.__dict__['api'] = api  # TODO: Allow for global?
+        self.__dict__['api'] = api
 
         super(Resource, self).__setattr__('version', version)
         super(Resource, self).__setattr__('__header__', header or {})
@@ -65,7 +61,8 @@ class Resource(object):
         for key, value in attributes.items():
             setattr(
                 self, utils.to_pythonic_name(key),
-                self.merge(value) if isinstance(value, dict) else value)
+                utils.to_pythonic_dict(value)
+                if isinstance(value, dict) else value)
 
     def merge_response(self, response):
         try:

@@ -30,3 +30,10 @@ class ServerError(AltaPayException):
     """
     Raised when an error in the 500 range is returned from the AltaPay service.
     """
+
+
+class MultipleResourcesError(AltaPayException):
+    """
+    Raised if more than one Resource was found when attempting to look up a
+    single resource.
+    """

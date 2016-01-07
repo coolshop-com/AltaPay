@@ -25,11 +25,11 @@ class UtilsTest(TestCase):
                 'APIResponse': {
                     'Header': {
                         'Date': '2015-12-12T21:35:23+01:00',
-                        'ErrorCode': '0',
+                        'ErrorCode': 0,
                         'Path': 'API/login',
                         'ErrorMessage': None
                     },
-                    '@version': '20150526',
+                    '@version': 20150526,
                     'Body': {
                         'Result': 'OK',
                         'TestNode': {
@@ -96,3 +96,10 @@ class UtilsTest(TestCase):
             query_string, quote((
                 'customer[address][name]=testname&'
                 'customer[address][address]=testaddr'), safe='/=&'))
+
+    def test_handle_xml_value(self):
+        self.assertEqual(utils.handle_xml_value('true'), True)
+        self.assertEqual(utils.handle_xml_value('false'), False)
+        self.assertEqual(utils.handle_xml_value('12345'), 12345)
+        self.assertEqual(utils.handle_xml_value('abc'), 'abc')
+        self.assertEqual(utils.handle_xml_value([1, 2, 3]), [1, 2, 3])

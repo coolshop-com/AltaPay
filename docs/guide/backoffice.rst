@@ -1,4 +1,0 @@
-.. _guide-backoffice:
-
-Backoffice
-==========

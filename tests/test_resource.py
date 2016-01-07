@@ -72,7 +72,7 @@ class ResponseTest(TestCase):
         response = self.load_dict_response(
             self.load_xml_response('200_login.xml'))
         resource = Resource.create_from_response(response)
-        self.assertEqual(resource.version, '20150526')
+        self.assertEqual(resource.version, 20150526)
         self.assertEqual(len(resource.__header__) > 0, True)
         self.assertEqual(len(resource.__data__) > 0, True)
 

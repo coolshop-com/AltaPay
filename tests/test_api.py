@@ -12,8 +12,8 @@ class APITest(TestCase):
     def setUp(self):
         self.api = API(mode='test', auto_login=False)
 
-    def test_index_successful(self):
-        self.assertEqual(self.api.index().success, True)
+    def test_test_connection_successful(self):
+        self.assertEqual(self.api.test_connection().success, True)
 
     @responses.activate
     def test_login_successful(self):

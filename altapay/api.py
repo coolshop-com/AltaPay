@@ -78,16 +78,16 @@ class API(object):
         # successful, the HTTP response code will be 401 and result in an
         # UnauthorizedError from _response()
 
-    def index(self):
+    def test_connection(self):
         """
-        Performs an index operation on the AltaPay service. This operation does
+        Tests the connection to the AltaPay service. This operation does
         not require valid API credentials, and as such can only be used to
         assert if AltaPay is responding.
 
         :rtype: :samp:`True` if a valid response is returned, otherwise
             :samp:`False`.
         """
-        return Resource.create_from_response(self.get('API/index'))
+        return Resource.create_from_response(self.get('API/testConnection'))
 
     def _headers(self):
         return {

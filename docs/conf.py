@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'AltaPay Python SDK'
-copyright = '2015, Coolshop.com'
+copyright = '2015-2016, Coolshop.com'
 author = 'Coolshop.com'
 
 # The version info for the project you're documenting, acts as replacement for

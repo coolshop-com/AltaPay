@@ -22,9 +22,38 @@ def to_pythonic_name(name):
 
 
 def to_pythonic_dict(dictionary):
+    """
+    *Note: This is an internal API and may be changed without notice.*
+    """
+    # TODO: This should probably be cleaned up, and also support dictionaries
+    # in lists
+    pythonic = {}
+    for key, value in dictionary.items():
+        pythonic
     return {
-        to_pythonic_name(k): v for k, v in dictionary.items()
+        to_pythonic_name(k): (
+            to_pythonic_dict(v) if isinstance(v, dict) else v)
+        for k, v in dictionary.items()
     }
+
+
+def handle_xml_value(value):
+    """
+    *Note: This is an internal API and may be changed without notice.*
+    """
+    if not isinstance(value, str) and not isinstance(value, text_type):
+        return value
+
+    value = text_type(value)
+
+    if value == 'true':
+        return True
+    elif value == 'false':
+        return False
+    elif value.isdigit():
+        return int(value)
+
+    return value
 
 
 def etree_to_dict(tree):
@@ -37,14 +66,17 @@ def etree_to_dict(tree):
         dd = defaultdict(list)
         for dc in map(etree_to_dict, children):
             for k, v in dc.items():
-                dd[k].append(v)
+                dd[k].append(handle_xml_value(v))
         d = {
             tree.tag: {
-                k: v[0] if len(v) == 1 else v for k, v in dd.items()
+                k: handle_xml_value(v[0])
+                if len(v) == 1 else handle_xml_value(v)
+                for k, v in dd.items()
             }
         }
     if tree.attrib:
-        d[tree.tag].update(('@' + k, v) for k, v in tree.attrib.items())
+        d[tree.tag].update(
+            ('@' + k, handle_xml_value(v)) for k, v in tree.attrib.items())
     if tree.text:
         text = tree.text.strip()
         if children or tree.attrib:
@@ -57,7 +89,8 @@ def etree_to_dict(tree):
 
 def http_build_query(payload):
     """
-    Build a RFC (?? look up the number again) compatible query string.
+    Build a query string that matches the way PHP does it with
+    :samp:`http_build_query`.
 
     In output, this function loosely matches what PHP does in the function
     :samp:`http_build_query`. It handles complex types of both dict and list.
@@ -67,10 +100,10 @@ def http_build_query(payload):
 
     *Note: This is an internal API and may be changed without notice.*
 
-    :arg payload: the payload to convert to an RFC (??) compatible query
-        string. This has to be :samp:`dict` compatible, but can hold lists as
-        values in the dictionary. Nested dictionaries can be used, and lists
-        can hold dictionaries.
+    :arg payload: the payload to convert to a query string. This has to be
+        :samp:`dict` compatible, but can hold lists as values in the
+        dictionary. Nested dictionaries can be used, and lists can hold
+        dictionaries.
 
     :rtype: :samp:`string` that can be used as a GET parameter for HTTP
         requests
