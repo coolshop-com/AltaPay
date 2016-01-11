@@ -9,6 +9,12 @@ class AltaPayException(Exception):
     pass
 
 
+class APIError(AltaPayException):
+    """
+    Raised if the API object could not be configured with the given parameters.
+    """
+
+
 class UnauthorizedAccessError(AltaPayException):
     """
     Raised on unauthorized errors against the AltaPay service.

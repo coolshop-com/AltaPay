@@ -13,6 +13,7 @@ Change Log
 **Bugfixes**
 
 - Fixed a bug where specifying a non-existing terminal while creating an ``altapay.Payment`` object would result in ``altapay.Payment.success`` returning ``True``
+- Fixed a bug where running in production mode was not possible. It is now possible by specifying a shop name when instantiating the API
 
 0.1.dev1 (2015-01-05)
 +++++++++++++++++++++

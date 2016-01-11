@@ -32,6 +32,16 @@ class API(object):
         self.mode = kwargs.get('mode', 'test')
         self.url = kwargs.get('url', self._default_url)
 
+        # If production mode, shop_name must be passed through kwargs, as it
+        # is neede for the URL
+        self.shop_name = kwargs.get('shop_name', '')
+        if self.mode == 'production' and not self.shop_name:
+            raise exceptions.APIError(
+                'No shop_name was provided, even though production mode was '
+                'specified. When running in production, a shop_name is ',
+                'needed, as this is used to produce the AltaPay URL.')
+        self.url = self.url.format(shop_name=self.shop_name)
+
         # If account information is passed through the kwargs, use these
         # If not, attempt to read from the environment
         self.account = kwargs.get('account', '')
@@ -42,16 +52,16 @@ class API(object):
             self.password = os.environ.get('ALTAPAY_ACCOUNT_PASSWORD', '')
 
         if not self.url:
-            raise Exception(
+            raise exceptions.APIError(
                 'No API URL was provided, and the selected mode could not be '
-                'mapped to a default URL: ' + self.mode)  # TODO: Custom Exc?
+                'mapped to a default URL: ' + self.mode)
 
         if auto_login:
             self.login()
 
     @property
     def _default_url(self):
-        return __api_base_url__.get(self.mode)
+        return __api_base_url__.get(self.mode, '')
 
     @property
     def _auth(self):

@@ -62,8 +62,16 @@ class APITest(TestCase):
             API()
 
     def test_missing_url(self):
-        with self.assertRaises(Exception):
+        with self.assertRaises(exceptions.APIError):
             API(auto_login=False, mode='notworking')
+
+    def test_production_missing_shop_name(self):
+        with self.assertRaises(exceptions.APIError):
+            API(auto_login=False, mode='production')
+
+    def test_production_shop_name(self):
+        api = API(auto_login=False, mode='production', shop_name='test-shop')
+        self.assertIn('test-shop', api.url)
 
     @responses.activate
     def test_http_response_code_not_supported(self):

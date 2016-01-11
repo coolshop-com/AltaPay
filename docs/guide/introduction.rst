@@ -25,8 +25,12 @@ All resources that expose AltaPay functionality requires an :py:class:`altapay.A
 
     # If you instead want to create an object for production calls, simply
     # change the mode
-    api = API(mode='production', account='account', password='password')
+    api = API(
+        mode='production', account='account', password='password',
+        shop_name='test-shop')
 
 Optionally, the environment variables :samp:`ALTAPAY_ACCOUNT_NAME` and :samp:`ALTAPAY_ACCOUNT_PASSWORD` can be used instead of passing the account and password directly to :py:class:`altapay.API`.
+
+The :samp:`shop_name` parameter will be used to populate the AltaPay service URL, and is not required when running in test mode.
 
 Making an instance of :py:class:`altapay.API` will automatically attempt to do the login service call in the AltaPay API, which will verify your account and password. This is reccomended behaviour by the AltaPay service, and will only happen when the instance is created. If this is not the desired behaviour, an optional parameter :samp:`auto_login` can be set to :samp:`False` to disable the automatic login. If you do this, you should call :py:func:`altapay.API.login()` yourself before you do any other calls.
