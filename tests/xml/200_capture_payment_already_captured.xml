@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<APIResponse version="20151228">
+    <Header>
+        <Date>2016-01-11T12:34:19+01:00</Date>
+        <Path>API/captureReservation?transaction_id=8035652</Path>
+        <ErrorCode>0</ErrorCode>
+        <ErrorMessage/>
+    </Header>
+    <Body>
+        <Result>Error</Result>
+        <MerchantErrorMessage>You can not capture an amount less than or equal to 0</MerchantErrorMessage>
+        <CardHolderErrorMessage>You can not capture an amount less than or equal to 0</CardHolderErrorMessage>
+        <CardHolderMessageMustBeShown>false</CardHolderMessageMustBeShown>
+        <CaptureAmount/>
+        <CaptureCurrency>978</CaptureCurrency>
+        <CaptureResult>Error</CaptureResult>
+        <Transactions>
+            <Transaction>
+                <TransactionId>8035652</TransactionId>
+                <PaymentId>97308d84-abaf-4f03-a7a4-7b07d5cbb8c4</PaymentId>
+                <AuthType>payment</AuthType>
+                <CardStatus>Valid</CardStatus>
+                <CreditCardExpiry>
+                    <Year>2017</Year>
+                    <Month>06</Month>
+                </CreditCardExpiry>
+                <CreditCardToken>9d495ff6669963d348c37ab3da4aadb37bdfb8da</CreditCardToken>
+                <CreditCardMaskedPan>457126******8049</CreditCardMaskedPan>
+                <ThreeDSecureResult>Not_Attempted</ThreeDSecureResult>
+                <LiableForChargeback>Merchant</LiableForChargeback>
+                <CVVCheckResult>Not_Attempted</CVVCheckResult>
+                <BlacklistToken>cf8f5ea865e9ac187feccad5535550c031cdd991</BlacklistToken>
+                <ShopOrderId>1234</ShopOrderId>
+                <Shop>Test</Shop>
+                <Terminal>Test Terminal</Terminal>
+                <TransactionStatus>captured</TransactionStatus>
+                <ReasonCode>NONE</ReasonCode>
+                <MerchantCurrency>978</MerchantCurrency>
+                <MerchantCurrencyAlpha>EUR</MerchantCurrencyAlpha>
+                <CardHolderCurrency>978</CardHolderCurrency>
+                <CardHolderCurrencyAlpha>EUR</CardHolderCurrencyAlpha>
+                <ReservedAmount>1.23</ReservedAmount>
+                <CapturedAmount>1.23</CapturedAmount>
+                <RefundedAmount>0.00</RefundedAmount>
+                <CreditedAmount>0.00</CreditedAmount>
+                <RecurringDefaultAmount>0.00</RecurringDefaultAmount>
+                <SurchargeAmount>0.00</SurchargeAmount>
+                <CreatedDate>2016-01-05 15:46:37</CreatedDate>
+                <UpdatedDate>2016-01-11 12:34:19</UpdatedDate>
+                <PaymentNature>CreditCard</PaymentNature>
+                <PaymentSchemeName>Visa</PaymentSchemeName>
+                <PaymentNatureService name="SoapTestAcquirer">
+                    <SupportsRefunds>true</SupportsRefunds>
+                    <SupportsRelease>true</SupportsRelease>
+                    <SupportsMultipleCaptures>true</SupportsMultipleCaptures>
+                    <SupportsMultipleRefunds>true</SupportsMultipleRefunds>
+                </PaymentNatureService>
+                <AddressVerification>S</AddressVerification>
+                <AddressVerificationDescription>AVS not supported</AddressVerificationDescription>
+                <ChargebackEvents/>
+                <PaymentInfos/>
+            </Transaction>
+        </Transactions>
+    </Body>
+</APIResponse>

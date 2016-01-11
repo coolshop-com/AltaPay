@@ -14,3 +14,41 @@ The transaction itself is thought of as a separate resource from the :py:class`a
     transaction = Transaction.find('TransactionID', api=api)
 
 On the :py:class:`altapay.Transaction` object, you will find all of the information described in the AltaPay API, listed under the :samp:`API/payments` call. The usual rules for naming applies.
+
+.. _guide-working-with-transactions-capturing-transaction:
+
+Capturing a Transaction
++++++++++++++++++++++++
+
+Once you have an instance of :py:class:`altapay.Transaction`, it is possible to perform actions on this instance. One of the most common one, is that of capturing it. In the simplest form, it is possible to capture the full amount on the transaction:
+
+.. code :: python
+
+    from altapay import Transaction
+
+    transaction = Transaction.find('TransactionID', api=api)
+    response = transaction.capture()
+
+    if response.success:
+        # Capture was successful
+        pass
+    else:
+        raise Exception('Not able to capture')
+
+The response is a bare :py:class:`altapay.Resource` and will contain the full response returned by AltaPay.
+
+Of course, this is often not the desired behaviour. You can provider further information to :py:func:`altapay.Transaction.capture` as described in the AltaPay API of :samp:`API/captureReservation`. For example, you can capture a partial amount in the following way, which also shows how to supply an order line.
+
+.. code :: python
+
+    from altapay import Transaction
+
+    transaction = Transaction.find('TransactionID', api=api)
+    respnse = transaction.capture(
+        orderLines=[{
+            'description': 'Blue Shirt',
+            'itemId': '12345',
+            'quantity': 1.0,
+            'unitPrice': 19.95
+        }],
+        amount=19.95)

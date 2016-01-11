@@ -16,6 +16,8 @@
                 <TransactionId>123456</TransactionId>
                 <AuthType>payment</AuthType>
                 <CardStatus>Valid</CardStatus>
+                <ReservedAmount>13.29</ReservedAmount>
+                <CapturedAmount>0.0</CapturedAmount>
                 <PaymentNatureService>
                     <SupportsRefunds>true</SupportsRefunds>
                     <SupportsRelease>true</SupportsRelease>

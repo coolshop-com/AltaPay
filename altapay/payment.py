@@ -19,7 +19,6 @@ class Payment(Resource):
 
         :rtype: :samp:`True` if a payment was created, otherwise :samp:`False`.
         """
-
         parameters = {
             'terminal': terminal,
             'shop_orderid': shop_orderid,

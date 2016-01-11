@@ -103,3 +103,28 @@ class UtilsTest(TestCase):
         self.assertEqual(utils.handle_xml_value('12345'), 12345)
         self.assertEqual(utils.handle_xml_value('abc'), 'abc')
         self.assertEqual(utils.handle_xml_value([1, 2, 3]), [1, 2, 3])
+
+    def test_xml_to_dict(self):
+        xml_response = self.load_xml_response('etree_to_dict.xml')
+        response_as_dict = utils.xml_to_dict(xml_response)
+        self.assertEqual(
+            response_as_dict,
+            {
+                'APIResponse': {
+                    'Header': {
+                        'Date': '2015-12-12T21:35:23+01:00',
+                        'ErrorCode': 0,
+                        'Path': 'API/login',
+                        'ErrorMessage': None
+                    },
+                    '@version': 20150526,
+                    'Body': {
+                        'Result': 'OK',
+                        'TestNode': {
+                            '#text': 'Test',
+                            '@value': 'test'
+                        }
+                    }
+                }
+            }
+        )

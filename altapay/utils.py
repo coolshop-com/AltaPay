@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import re
 from collections import OrderedDict, defaultdict
+from xml.etree import ElementTree
 
 from six import text_type
 from six.moves.urllib.parse import urlencode
@@ -27,9 +28,6 @@ def to_pythonic_dict(dictionary):
     """
     # TODO: This should probably be cleaned up, and also support dictionaries
     # in lists
-    pythonic = {}
-    for key, value in dictionary.items():
-        pythonic
     return {
         to_pythonic_name(k): (
             to_pythonic_dict(v) if isinstance(v, dict) else v)
@@ -39,7 +37,17 @@ def to_pythonic_dict(dictionary):
 
 def handle_xml_value(value):
     """
+    The AltaPay XML does not contain a scheme, and as such, guesswork has to be
+    employed in order to produce decent values.
+
+    This function parses values of the decoded XML, and ensures both digits and
+    boolean values.
+
     *Note: This is an internal API and may be changed without notice.*
+
+    :arg value: value to be parsed (can be a complex datatype)
+
+    :rtype: depends on the input argument
     """
     if not isinstance(value, str) and not isinstance(value, text_type):
         return value
@@ -53,7 +61,21 @@ def handle_xml_value(value):
     elif value.isdigit():
         return int(value)
 
+    try:
+        return float(value)
+    except ValueError:
+        pass
+
     return value
+
+
+def xml_to_dict(xml):
+    """
+    :arg xml: XML document in string representation
+
+    :rtype: :samp:`dict`
+    """
+    return etree_to_dict(ElementTree.XML(xml))
 
 
 def etree_to_dict(tree):

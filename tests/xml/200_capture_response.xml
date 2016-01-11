@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<APIResponse version="20151228">
+    <Header>
+        <Date>2016-01-11T12:38:39+01:00</Date>
+        <Path>API/captureReservation?transaction_id=8124642</Path>
+        <ErrorCode>0</ErrorCode>
+        <ErrorMessage/>
+    </Header>
+    <Body>
+        <Result>Success</Result>
+        <CardHolderMessageMustBeShown>false</CardHolderMessageMustBeShown>
+        <CaptureAmount/>
+        <CaptureCurrency>208</CaptureCurrency>
+        <CaptureResult>Success</CaptureResult>
+        <Transactions>
+            <Transaction>
+                <TransactionId>8124642</TransactionId>
+                <PaymentId>a0595f92-9fd1-4741-b31e-bd130149210b</PaymentId>
+                <AuthType>payment</AuthType>
+                <CardStatus>InvalidLuhn</CardStatus>
+                <CreditCardExpiry>
+                    <Year>2016</Year>
+                    <Month>01</Month>
+                </CreditCardExpiry>
+                <CreditCardToken>707f533d14dc3356100b1cc4dee470c60c50970d</CreditCardToken>
+                <CreditCardMaskedPan>477700******0000</CreditCardMaskedPan>
+                <ThreeDSecureResult>Not_Attempted</ThreeDSecureResult>
+                <LiableForChargeback>Merchant</LiableForChargeback>
+                <CVVCheckResult>Not_Attempted</CVVCheckResult>
+                <BlacklistToken>4f14e7c118765fd7ca1cef572c447d14816ab222</BlacklistToken>
+                <ShopOrderId>8000011</ShopOrderId>
+                <Shop>shop</Shop>
+                <Terminal>test terminal</Terminal>
+                <TransactionStatus>captured</TransactionStatus>
+                <ReasonCode>NONE</ReasonCode>
+                <MerchantCurrency>208</MerchantCurrency>
+                <MerchantCurrencyAlpha>DKK</MerchantCurrencyAlpha>
+                <CardHolderCurrency>208</CardHolderCurrency>
+                <CardHolderCurrencyAlpha>DKK</CardHolderCurrencyAlpha>
+                <ReservedAmount>13.29</ReservedAmount>
+                <CapturedAmount>13.29</CapturedAmount>
+                <RefundedAmount>0.00</RefundedAmount>
+                <CreditedAmount>0.00</CreditedAmount>
+                <RecurringDefaultAmount>0.00</RecurringDefaultAmount>
+                <SurchargeAmount>0.00</SurchargeAmount>
+                <CreatedDate>2016-01-11 12:00:07</CreatedDate>
+                <UpdatedDate>2016-01-11 12:38:39</UpdatedDate>
+                <PaymentNature>CreditCard</PaymentNature>
+                <PaymentSchemeName>Visa</PaymentSchemeName>
+                <PaymentNatureService name="SoapTestAcquirer">
+                    <SupportsRefunds>true</SupportsRefunds>
+                    <SupportsRelease>true</SupportsRelease>
+                    <SupportsMultipleCaptures>true</SupportsMultipleCaptures>
+                    <SupportsMultipleRefunds>true</SupportsMultipleRefunds>
+                </PaymentNatureService>
+                <AddressVerification>L</AddressVerification>
+                <AddressVerificationDescription>Invalid address verification response code</AddressVerificationDescription>
+                <ChargebackEvents/>
+                <PaymentInfos>
+                    <PaymentInfo name="">
+                        <![CDATA[COOL]]>
+                    </PaymentInfo>
+                </PaymentInfos>
+            </Transaction>
+        </Transactions>
+    </Body>
+</APIResponse>

@@ -1,12 +1,14 @@
 Change Log
 ----------
 
-0.1.dev2 (2015-01-XX)
+0.1.dev2 (2015-01-11)
 +++++++++++++++++++++
 
 **Features**
 
-- Added ``altapay.api.Transaction`` and the ability to find a transaction by its transaction ID in the AltaPay service
+- Added ``altapay.Transaction`` and the ability to find a transaction by its transaction ID in the AltaPay service
+- Added ``altapay.Transaction.capture()`` which captures a transaction that has already been loaded. Optinally, parameters can be passed which allows for partial captures (see the AltaPay documentation for full list of possible arguments)
+- Added a public facing API for converting an AltaPay XML response (as a string) to a Python dictionary (``altapay.utils.xml_to_dict``)
 
 **Bugfixes**
 

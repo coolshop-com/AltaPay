@@ -23,7 +23,6 @@ class TestCase(TestCase):
         path = os.path.join(os.path.dirname(__file__), 'xml', filename)
         with open(path, 'r') as f:
             return f.read()
-            return utils.etree_to_dict(ElementTree.XML(f.read()))
 
     def get_api_url(self, resource):
         return urljoin(self.api.url, resource)
