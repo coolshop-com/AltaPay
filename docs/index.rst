@@ -26,6 +26,7 @@ Guide
 
    guide/introduction
    guide/create_payment
+   guide/callback_handling
    guide/transactions
 
 
@@ -38,6 +39,7 @@ API Documentation
    api/api
    api/resource
    api/payment
+   api/callback
    api/transaction
    api/exceptions
    api/utils

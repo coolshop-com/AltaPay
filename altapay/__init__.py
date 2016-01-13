@@ -9,6 +9,7 @@ __api_base_url__ = {
 }
 
 from .api import API  # NOQA
+from .callback import Callback  # NOQA
 from .payment import Payment  # NOQA
 from .resource import Resource  # NOQA
 from .transaction import Transaction  # NOQA

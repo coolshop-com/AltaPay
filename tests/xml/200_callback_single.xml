@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<APIResponse version="20151228">
+    <Header>
+        <Date>2016-01-12T11:13:11+01:00</Date>
+        <Path>API/reservationOfFixedAmount?pid=c80919f5-0b6d-4679-872a-980162e9cbf1</Path>
+        <ErrorCode>0</ErrorCode>
+        <ErrorMessage/>
+    </Header>
+    <Body>
+        <Result>Success</Result>
+        <CardHolderMessageMustBeShown>false</CardHolderMessageMustBeShown>
+        <Transactions>
+            <Transaction>
+                <TransactionId>8140152</TransactionId>
+                <PaymentId>d851583c-bdbd-489b-a237-bc153916028c</PaymentId>
+                <AuthType>subscription_payment</AuthType>
+                <CardStatus>InvalidLuhn</CardStatus>
+                <CreditCardExpiry>
+                    <Year>2016</Year>
+                    <Month>01</Month>
+                </CreditCardExpiry>
+                <CreditCardToken>e48a3bb37ab9e2aeb935b42a3c37d1dd42be768b</CreditCardToken>
+                <CreditCardMaskedPan>500000******0000</CreditCardMaskedPan>
+                <ThreeDSecureResult>Not_Applicable</ThreeDSecureResult>
+                <LiableForChargeback>Merchant</LiableForChargeback>
+                <CVVCheckResult>Not_Applicable</CVVCheckResult>
+                <BlacklistToken>cf9d894c143b3448697726523d3fec4ab73d2da3</BlacklistToken>
+                <ShopOrderId>8000011</ShopOrderId>
+                <Shop>Test Shop</Shop>
+                <Terminal>Test Terminal</Terminal>
+                <TransactionStatus>preauth</TransactionStatus>
+                <ReasonCode>NONE</ReasonCode>
+                <MerchantCurrency>208</MerchantCurrency>
+                <MerchantCurrencyAlpha>DKK</MerchantCurrencyAlpha>
+                <CardHolderCurrency>208</CardHolderCurrency>
+                <CardHolderCurrencyAlpha>DKK</CardHolderCurrencyAlpha>
+                <ReservedAmount>13.29</ReservedAmount>
+                <CapturedAmount>0.00</CapturedAmount>
+                <RefundedAmount>0.00</RefundedAmount>
+                <CreditedAmount>0.00</CreditedAmount>
+                <RecurringDefaultAmount>0.00</RecurringDefaultAmount>
+                <SurchargeAmount>0.00</SurchargeAmount>
+                <CreatedDate>2016-01-12 11:13:11</CreatedDate>
+                <UpdatedDate>2016-01-12 11:13:11</UpdatedDate>
+                <PaymentNature>CreditCard</PaymentNature>
+                <PaymentSchemeName>Maestro</PaymentSchemeName>
+                <PaymentNatureService name="SoapTestAcquirer">
+                    <SupportsRefunds>true</SupportsRefunds>
+                    <SupportsRelease>true</SupportsRelease>
+                    <SupportsMultipleCaptures>true</SupportsMultipleCaptures>
+                    <SupportsMultipleRefunds>true</SupportsMultipleRefunds>
+                </PaymentNatureService>
+                <AddressVerification>L</AddressVerification>
+                <AddressVerificationDescription>Invalid address verification response code</AddressVerificationDescription>
+                <ChargebackEvents/>
+                <PaymentInfos/>
+                <ReconciliationIdentifiers/>
+            </Transaction>
+        </Transactions>
+    </Body>
+</APIResponse>
