@@ -48,7 +48,7 @@ class PaymentTest(TestCase):
     def test_transaction_set_single(self):
         callback = Callback.from_xml_callback(self.response_single_as_str)
 
-        transactions = callback.transactions()
+        transactions = callback.transactions(auth_type='subscription_payment')
 
         self.assertIsInstance(transactions, list)
         self.assertEqual(len(transactions), 1)

@@ -23,10 +23,13 @@ class Callback(Resource):
             data = [data]
 
         transaction_set = data
+
         if auth_type:
             transaction_set = [
                 transaction for transaction in data
-                if transaction['AuthType'] == auth_type
+                if auth_type in (
+                    transaction.get('AuthType', ''),
+                    transaction.get('auth_type', ''))
             ]
 
         return [
