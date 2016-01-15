@@ -8,10 +8,11 @@ The Python SDK for AltaPay attempts to make it possible to work with the AltaPay
 Noticeable differences are;
 
 - The Python SDK is object based, with an object per resource (e.g. an :py:class:`altapay.Payment` resource). Actions are performed on these objects in order to carry out API calls in the AltaPay API
+- All values that you receive from responses are accessbile as attributes on the objects. Note that if an attributes contains a dictionary, the values of this dictionary of course needs to be accessed as it is - a dictionary. If you, for whatever reason, needs access to the underlying dictionary representation, it is available at the attribute :samp:`__data__`
 - To make the naming scheme feel more Pythonic, names returned by AltaPay is mapped accordingly; e.g. ``CamelCase`` becomes ``camel_case``
 - In the AltaPay API, when you send parameters to calls, and these contains nested structures in the form of either arrays or hashed values, the PHP query parameter syntax is used. In the Python SDK, this has been changed to lists and dictionaries for easier use. For a concrete use case, see the payment creation examples
 
-The API object
+The API Object
 ++++++++++++++
 
 All resources that expose AltaPay functionality requires an :py:class:`altapay.API` object to be passed. The object is what authenticates you to the AltaPay API service, and is also what determines whether or not you should connect to the test service or the production service.
