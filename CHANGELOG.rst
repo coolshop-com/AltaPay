@@ -1,6 +1,18 @@
 Change Log
 ----------
 
+0.1.dev3 (2015-01-18)
++++++++++++++++++++++
+
+**Bugfixes**
+
+- Added missing apostrophe's in the documentation for the callback guide (#24)
+- Fixed a bug where filtering transactions on a ``altapay.Callback`` object might result in a ``KeyError`` (#25)
+
+**Improvements**
+
+- Made it more explicit how attributes on response objects work (#26)
+
 0.1.dev2 (2015-01-14)
 +++++++++++++++++++++
 
