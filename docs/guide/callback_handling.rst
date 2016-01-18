@@ -36,7 +36,7 @@ This example extends the usecase described above, and filters out the subscripti
     callback = Callback.from_xml_callback(xml)
 
     if callback.result == 'Success':
-        transactions = callback.transactions(auth_type=subscription_payment)
+        transactions = callback.transactions(auth_type='subscription_payment')
         for transaction in transactions:
             # Will only show transactions of the authentication type
             # subscription_payment
