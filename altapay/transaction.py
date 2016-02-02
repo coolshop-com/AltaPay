@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from .exceptions import MultipleResourcesError
+from .exceptions import MultipleResourcesError, ResourceNotFoundError
 from .resource import Resource
 
 
@@ -19,14 +19,20 @@ class Transaction(Resource):
             'API/payments', parameters={'transaction_id': transaction_id}
         )['APIResponse']
 
-        if isinstance(response['Body']['Transactions']['Transaction'], list):
+        try:
+            transaction = response['Body']['Transactions']['Transaction']
+        except KeyError:
+            raise ResourceNotFoundError(
+                'No Transaction found matching transaction ID: {}'.format(
+                    transaction_id))
+
+        if isinstance(transaction, list):
             raise MultipleResourcesError(
                 'More than one Payment was found. Total found is: {}'.format(
                     len(response['Body']['Transactions'])))
 
         return cls(
-            response['@version'], response['Header'],
-            response['Body']['Transactions']['Transaction'], api=api)
+            response['@version'], response['Header'], transaction, api=api)
 
     def capture(self, **kwargs):
         """

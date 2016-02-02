@@ -43,3 +43,9 @@ class MultipleResourcesError(AltaPayException):
     Raised if more than one Resource was found when attempting to look up a
     single resource.
     """
+
+
+class ResourceNotFoundError(AltaPayException):
+    """
+    Raised if a resource is not found.
+    """

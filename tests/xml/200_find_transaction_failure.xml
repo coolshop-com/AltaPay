@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<APIResponse version="20151228">
+    <Header>
+        <Date>2016-02-02T15:51:39+01:00</Date>
+        <Path>API/payments?transaction_id=TEST-TRANSACTION-ID</Path>
+        <ErrorCode>0</ErrorCode>
+        <ErrorMessage/>
+    </Header>
+    <Body>
+        <Result/>
+        <CardHolderMessageMustBeShown>false</CardHolderMessageMustBeShown>
+        <ResultFilter>
+            <TransactionIdEquals>TEST-TRANSACTION-ID</TransactionIdEquals>
+        </ResultFilter>
+    </Body>
+</APIResponse>

@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import responses
 from altapay import API, Transaction
-from altapay.exceptions import MultipleResourcesError
+from altapay.exceptions import MultipleResourcesError, ResourceNotFoundError
 
 from .test_cases import TestCase
 
@@ -10,6 +10,16 @@ from .test_cases import TestCase
 class PaymentTest(TestCase):
     def setUp(self):
         self.api = API(mode='test', auto_login=False)
+
+    @responses.activate
+    def test_find_transaction_failure(self):
+        responses.add(
+            responses.GET, self.get_api_url('API/payments'),
+            body=self.load_xml_response('200_find_transaction_failure.xml'),
+            status=200, content_type='application/xml')
+
+        with self.assertRaises(ResourceNotFoundError):
+            Transaction.find('TEST-TRANSACTION-ID', self.api)
 
     @responses.activate
     def test_find_transaction_success(self):
