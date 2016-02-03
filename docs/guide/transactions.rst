@@ -52,3 +52,21 @@ Of course, this is often not the desired behaviour. You can provider further inf
             'unitPrice': 19.95
         }],
         amount=19.95)
+
+.. _guide-working-with-transactions-charge-subscription:
+
+Charging a Subscription
++++++++++++++++++++++++
+
+Given a :py:class:`altapay.Transaction` which is a subscription, it is possible to make a charge (effectively issuing a capture directly on the subscription):
+
+.. code :: python
+
+    from altapay import Transaction
+
+    transaction = Transaction.find('TransactionID', api=api)
+    response_transactions = transaction.charge_subscription(amount=49.00)
+
+Note that you should always receive a list of transactions when issuing a charge on a subscription, since you will receive one representing the original :py:class:`altapay.Transaction` you charged on, and a new one for the actual capture.
+
+As always, see the AltaPay documentation for a list of possible arguments.

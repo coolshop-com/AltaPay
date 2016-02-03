@@ -52,9 +52,38 @@ class Transaction(Resource):
         response = self.api.get(
             'API/captureReservation', parameters=parameters)['APIResponse']
 
-        super(Transaction, self).__setattr__(
-            '__data__', response['Body']['Transactions']['Transaction'])
-
         return Transaction(
             response['@version'], response['Header'],
             response['Body']['Transactions']['Transaction'], api=self.api)
+
+    def charge_subscription(self, **kwargs):
+        """
+        This will charge a subscription using a capture. Can be called many
+        times on a subscription.
+
+        If amount is not sent as an optinal parameter, the amount specified in
+        the original setup of the subscription will be used.
+
+        :param \*\*kwargs: used for optional charge subscription parameters,
+            see the AltaPay documentation for a full list.
+            Note that you will need to use lists and dictionaries to map the
+            URL structures from the AltaPay documentation into these kwargs.
+
+        :rtype: :samp:`list` of :py:class:`altapay.Transaction` objects.
+        """
+        parameters = {
+            'transaction_id': self.transaction_id
+        }
+
+        parameters.update(kwargs)
+
+        response = self.api.get(
+            'API/chargeSubscription', parameters=parameters)['APIResponse']
+
+        transactions = response['Body']['Transactions']['Transaction']
+        if not isinstance(transactions, list):
+            transactions = [transactions]
+
+        return [Transaction(
+            response['@version'], response['Header'], transaction,
+            api=self.api) for transaction in transactions]

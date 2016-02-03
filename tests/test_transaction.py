@@ -64,3 +64,25 @@ class PaymentTest(TestCase):
         transaction = transaction.capture()
 
         self.assertEqual(transaction.captured_amount, 13.29)
+
+    @responses.activate
+    def test_charge_subscription_single(self):
+        responses.add(
+            responses.GET, self.get_api_url('API/payments'),
+            body=self.load_xml_response('200_find_transaction_single.xml'),
+            status=200, content_type='application/xml')
+
+        # Note, this transaction technically isn't a valid subscription,
+        # but it will do
+        transaction = Transaction.find('TEST-TRANSACTION-ID', self.api)
+
+        responses.add(
+            responses.GET, self.get_api_url('API/chargeSubscription'),
+            body=self.load_xml_response('200_charge_subscription_single.xml'),
+            status=200, content_type='application/xml')
+
+        transactions = transaction.charge_subscription(amount=13.95)
+
+        self.assertEqual(len(transactions), 2)
+        for transaction in transactions:
+            self.assertIsInstance(transaction, Transaction)

@@ -1,6 +1,17 @@
 Change Log
 ----------
 
+1.0.dev4 (??)
++++++++++++++
+
+**Features**
+
+- Added ``altapay.Transaction.charge_subscription()`` which will charge a subscription on a transaction, if this transaction is setup as a subscription
+
+**Bugfixes**
+
+- Fixed a bug where looking up a non-existent transaction ID would result in a ``KeyError`` (#32)
+
 0.1.dev3 (2015-01-18)
 +++++++++++++++++++++
 

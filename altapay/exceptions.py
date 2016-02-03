@@ -6,7 +6,6 @@ class AltaPayException(Exception):
     Generic exception class for the AltaPay SDK. All specific exceptions raised
     from the SDK will inherit from this exceptions.
     """
-    pass
 
 
 class APIError(AltaPayException):
@@ -21,7 +20,6 @@ class UnauthorizedAccessError(AltaPayException):
 
     Corresponds to HTTP status code 401.
     """
-    pass
 
 
 class ResponseStatusError(AltaPayException):
@@ -29,7 +27,6 @@ class ResponseStatusError(AltaPayException):
     The response carried out against the AltaPay service did not respond with
     the expected response status code.
     """
-    pass
 
 
 class ServerError(AltaPayException):
