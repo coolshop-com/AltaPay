@@ -1,6 +1,14 @@
 Change Log
 ----------
 
+1.0.dev5 (2015-02-11)
++++++++++++++++++++++
+
+**Improvements**
+
+- **Backwards incompatible** Changed the return type of ``altapay.Transaction.charge_subscription()``. It will not return a ``altapay.Callback`` object instead of a list of transactions
+- **Backwards incompatible** Changed the argument of ``altapay.Callback.transactions()`` to be keyword only. Will now accept any number of filters, and these will be matched using AND logic
+
 1.0.dev4 (2015-02-03)
 +++++++++++++++++++++
 

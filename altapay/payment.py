@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from .resource import Resource
+from altapay.resource import Resource
 
 
 class Payment(Resource):

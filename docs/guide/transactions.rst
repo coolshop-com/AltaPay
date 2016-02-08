@@ -65,8 +65,8 @@ Given a :py:class:`altapay.Transaction` which is a subscription, it is possible 
     from altapay import Transaction
 
     transaction = Transaction.find('TransactionID', api=api)
-    response_transactions = transaction.charge_subscription(amount=49.00)
+    callback = transaction.charge_subscription(amount=49.00)
 
-Note that you should always receive a list of transactions when issuing a charge on a subscription, since you will receive one representing the original :py:class:`altapay.Transaction` you charged on, and a new one for the actual capture.
+Charging a subscription will return a Callback object that has a list of transactions; one representing the original :py:class:`altapay.Transaction` you charged on, and a new one for the actual capture.
 
 As always, see the AltaPay documentation for a list of possible arguments.

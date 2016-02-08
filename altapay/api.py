@@ -9,8 +9,9 @@ from xml.etree import ElementTree
 import requests
 from six.moves.urllib.parse import urljoin
 
-from . import __api_base_url__, __github_url__, __version__, exceptions, utils
-from .resource import Resource
+from altapay import (__api_base_url__, __github_url__, __version__, exceptions,
+                     utils)
+from altapay.resource import Resource
 
 logger = logging.getLogger(__name__)
 

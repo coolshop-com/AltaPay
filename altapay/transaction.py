@@ -1,7 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from .exceptions import MultipleResourcesError, ResourceNotFoundError
-from .resource import Resource
+import altapay.callback
+from altapay import exceptions
+from altapay.resource import Resource
 
 
 class Transaction(Resource):
@@ -22,12 +23,12 @@ class Transaction(Resource):
         try:
             transaction = response['Body']['Transactions']['Transaction']
         except KeyError:
-            raise ResourceNotFoundError(
+            raise exceptions.ResourceNotFoundError(
                 'No Transaction found matching transaction ID: {}'.format(
                     transaction_id))
 
         if isinstance(transaction, list):
-            raise MultipleResourcesError(
+            raise exceptions.MultipleResourcesError(
                 'More than one Payment was found. Total found is: {}'.format(
                     len(response['Body']['Transactions'])))
 
@@ -69,7 +70,7 @@ class Transaction(Resource):
             Note that you will need to use lists and dictionaries to map the
             URL structures from the AltaPay documentation into these kwargs.
 
-        :rtype: :samp:`list` of :py:class:`altapay.Transaction` objects.
+        :rtype: :py:class:`altapay.Callback` object.
         """
         parameters = {
             'transaction_id': self.transaction_id
@@ -80,10 +81,4 @@ class Transaction(Resource):
         response = self.api.get(
             'API/chargeSubscription', parameters=parameters)['APIResponse']
 
-        transactions = response['Body']['Transactions']['Transaction']
-        if not isinstance(transactions, list):
-            transactions = [transactions]
-
-        return [Transaction(
-            response['@version'], response['Header'], transaction,
-            api=self.api) for transaction in transactions]
+        return altapay.callback.Callback.from_xml_callback(response)

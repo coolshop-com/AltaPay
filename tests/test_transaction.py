@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import responses
-from altapay import API, Transaction
+from altapay import API, Callback, Transaction
 from altapay.exceptions import MultipleResourcesError, ResourceNotFoundError
 
 from .test_cases import TestCase
@@ -81,8 +81,10 @@ class PaymentTest(TestCase):
             body=self.load_xml_response('200_charge_subscription_single.xml'),
             status=200, content_type='application/xml')
 
-        transactions = transaction.charge_subscription(amount=13.95)
+        callback = transaction.charge_subscription(amount=13.95)
 
-        self.assertEqual(len(transactions), 2)
-        for transaction in transactions:
+        self.assertIsInstance(callback, Callback)
+
+        self.assertEqual(len(callback.transactions()), 2)
+        for transaction in callback.transactions():
             self.assertIsInstance(transaction, Transaction)

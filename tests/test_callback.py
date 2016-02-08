@@ -8,7 +8,7 @@ from altapay import API, Callback, Transaction
 from .test_cases import TestCase
 
 
-class PaymentTest(TestCase):
+class CallbackTest(TestCase):
     def setUp(self):
         self.api = API(mode='test', auto_login=False)
         self.response_as_str = self.load_xml_response(

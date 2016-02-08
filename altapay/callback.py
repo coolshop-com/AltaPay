@@ -2,13 +2,13 @@ from __future__ import absolute_import, unicode_literals
 
 from xml.etree import ElementTree
 
-from . import utils
-from .resource import Resource
-from .transaction import Transaction
+import altapay.transaction
+from altapay import utils
+from altapay.resource import Resource
 
 
 class Callback(Resource):
-    def transactions(self, auth_type=''):
+    def transactions(self, **kwargs):
         """
         List all of the transactions returned by the callback.
 
@@ -17,6 +17,14 @@ class Callback(Resource):
 
         :rtype: List of :py:class:`altapay.Transaction` objects.
         """
+        def _check_value(element, **kwargs):
+            for key, value in element.items():
+                check_key = utils.to_pythonic_name(key)
+                check_value = kwargs.pop(check_key, '')
+                if check_value and element[key] != check_value:
+                    return False
+            return True
+
         data = self.__data__['transactions']['transaction']
 
         if not isinstance(data, list):
@@ -24,16 +32,14 @@ class Callback(Resource):
 
         transaction_set = data
 
-        if auth_type:
-            transaction_set = [
-                transaction for transaction in data
-                if auth_type in (
-                    transaction.get('AuthType', ''),
-                    transaction.get('auth_type', ''))
-            ]
+        transaction_set = [
+            transaction for transaction in data
+            if _check_value(transaction, **kwargs)
+        ]
 
         return [
-            Transaction(self.version, self.__header__, transaction)
+            altapay.transaction.Transaction(
+                self.version, self.__header__, transaction)
             for transaction in transaction_set]
 
     @classmethod
@@ -43,10 +49,13 @@ class Callback(Resource):
 
         :rtype: :py:class:`altapay.Callback` instance.
         """
-        if not isinstance(callback, ElementTree.Element):
+        if isinstance(callback, str):
             callback = ElementTree.XML(callback)
-
-        response = utils.etree_to_dict(callback)['APIResponse']
+            response = utils.etree_to_dict(callback)['APIResponse']
+        elif isinstance(callback, ElementTree.Element):
+            response = utils.etree_to_dict(callback)['APIResponse']
+        else:
+            response = callback
 
         return cls(
             response['@version'], response['Header'],
