@@ -1,6 +1,13 @@
 Change Log
 ----------
 
+1.0.dev7 (2015-02-17)
++++++++++++++++++++++
+
+**Improvements**
+
+- **Backwards incompatible** Changed the name of ``altapay.Transaction.reserve()`` to ``altapay.Transaction.reserve_subscription_charge()``
+
 1.0.dev6 (2015-02-17)
 +++++++++++++++++++++
 

@@ -105,7 +105,7 @@ class PaymentTest(TestCase):
             body=self.load_xml_response('200_charge_subscription_single.xml'),
             status=200, content_type='application/xml')
 
-        callback = transaction.reserve(amount=13.95)
+        callback = transaction.reserve_subscription_charge(amount=13.95)
 
         self.assertIsInstance(callback, Callback)
 

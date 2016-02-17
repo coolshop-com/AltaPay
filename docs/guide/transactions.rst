@@ -83,7 +83,7 @@ Reserving a transaction works much like :ref:`guide-working-with-transactions-ch
     from altapay import Transaction
 
     transaction = Transaction.find('TransactionID', api=api)
-    callback = transaction.reserve(amount=49.00)
+    callback = transaction.reserve_subscription_charge(amount=49.00)
 
 Reserving an amount on a  will return a Callback object that has a list of transactions; one representing the original :py:class:`altapay.Transaction` you reserved on, and a new one for the actual reservation.
 

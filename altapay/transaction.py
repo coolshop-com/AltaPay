@@ -83,7 +83,7 @@ class Transaction(Resource):
 
         return altapay.callback.Callback.from_xml_callback(response)
 
-    def reserve(self, **kwargs):
+    def reserve_subscription_charge(self, **kwargs):
         """
         This will create a reservation on a subscription. Can be called many
         times on a subscription.
