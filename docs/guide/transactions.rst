@@ -70,3 +70,21 @@ Given a :py:class:`altapay.Transaction` which is a subscription, it is possible 
 Charging a subscription will return a Callback object that has a list of transactions; one representing the original :py:class:`altapay.Transaction` you charged on, and a new one for the actual capture.
 
 As always, see the AltaPay documentation for a list of possible arguments.
+
+.. _guide-working-with-transactions-reserve-subscription:
+
+Reserving a Subscription
+++++++++++++++++++++++++
+
+Reserving a transaction works much like :ref:`guide-working-with-transactions-charge-subscription`. The only difference is of course in the name: the amount will create a reservation instead of directly charging the amount straight away.
+
+.. code :: python
+
+    from altapay import Transaction
+
+    transaction = Transaction.find('TransactionID', api=api)
+    callback = transaction.reserve(amount=49.00)
+
+Reserving an amount on a  will return a Callback object that has a list of transactions; one representing the original :py:class:`altapay.Transaction` you reserved on, and a new one for the actual reservation.
+
+As always, see the AltaPay documentation for a list of possible arguments.

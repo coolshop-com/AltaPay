@@ -88,3 +88,27 @@ class PaymentTest(TestCase):
         self.assertEqual(len(callback.transactions()), 2)
         for transaction in callback.transactions():
             self.assertIsInstance(transaction, Transaction)
+
+    @responses.activate
+    def test_reserve_subscription_single(self):
+        responses.add(
+            responses.GET, self.get_api_url('API/payments'),
+            body=self.load_xml_response('200_find_transaction_single.xml'),
+            status=200, content_type='application/xml')
+
+        # Note, this transaction technically isn't a valid subscription,
+        # but it will do
+        transaction = Transaction.find('TEST-TRANSACTION-ID', self.api)
+
+        responses.add(
+            responses.GET, self.get_api_url('API/reserveSubscriptionCharge'),
+            body=self.load_xml_response('200_charge_subscription_single.xml'),
+            status=200, content_type='application/xml')
+
+        callback = transaction.reserve(amount=13.95)
+
+        self.assertIsInstance(callback, Callback)
+
+        self.assertEqual(len(callback.transactions()), 2)
+        for transaction in callback.transactions():
+            self.assertIsInstance(transaction, Transaction)

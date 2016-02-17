@@ -1,6 +1,13 @@
 Change Log
 ----------
 
+1.0.dev6 (2015-02-17)
++++++++++++++++++++++
+
+**Features**
+
+- Added ``altapay.Transaction.reserve()`` which will reserve an amount on a subscription
+
 1.0.dev5 (2015-02-11)
 +++++++++++++++++++++
 

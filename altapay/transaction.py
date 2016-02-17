@@ -82,3 +82,30 @@ class Transaction(Resource):
             'API/chargeSubscription', parameters=parameters)['APIResponse']
 
         return altapay.callback.Callback.from_xml_callback(response)
+
+    def reserve(self, **kwargs):
+        """
+        This will create a reservation on a subscription. Can be called many
+        times on a subscription.
+
+        If amount is not sent as an optinal parameter, the amount specified in
+        the original setup of the subscription will be used.
+
+        :param \*\*kwargs: used for optional reserve subscription parameters,
+            see the AltaPay documentation for a full list.
+            Note that you will need to use lists and dictionaries to map the
+            URL structures from the AltaPay documentation into these kwargs.
+
+        :rtype: :py:class:`altapay.Callback` object.
+        """
+        parameters = {
+            'transaction_id': self.transaction_id
+        }
+
+        parameters.update(kwargs)
+
+        response = self.api.get(
+            'API/reserveSubscriptionCharge',
+            parameters=parameters)['APIResponse']
+
+        return altapay.callback.Callback.from_xml_callback(response)
