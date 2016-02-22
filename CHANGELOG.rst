@@ -1,6 +1,13 @@
 Change Log
 ----------
 
+1.0.dev8 (2015-02-22)
++++++++++++++++++++++
+
+**Features**
+
+- Added ``altapay.Transaction.create_invoice_reservation()``
+
 1.0.dev7 (2015-02-17)
 +++++++++++++++++++++
 

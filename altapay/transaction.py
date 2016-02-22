@@ -7,6 +7,36 @@ from altapay.resource import Resource
 
 class Transaction(Resource):
     @classmethod
+    def create_invoice_reservation(cls, terminal, shop_orderid, amount,
+                                   currency, api, **kwargs):
+        """
+        Create a new invoice without first creating a payment.
+
+        :rtype: :py:class:`altapay.Transaction`
+        """
+        parameters = {
+            'terminal': terminal,
+            'shop_orderid': shop_orderid,
+            'amount': amount,
+            'currency': currency
+        }
+
+        parameters.update(kwargs)
+
+        response = api.get(
+            'API/createInvoiceReservation', parameters=parameters
+        )['APIResponse']
+
+        try:
+            transaction = response['Body']['Transactions']['Transaction']
+        except KeyError:
+            raise exceptions.ResourceNotFoundError(
+                'No Transaction was found in the AltaPay response.')
+
+        return cls(
+            response['@version'], response['Header'], transaction, api=api)
+
+    @classmethod
     def find(cls, transaction_id, api):
         """
         Find exactly one transaction by a transaction ID.

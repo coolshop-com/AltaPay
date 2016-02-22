@@ -88,3 +88,34 @@ Reserving a transaction works much like :ref:`guide-working-with-transactions-ch
 Reserving an amount on a  will return a Callback object that has a list of transactions; one representing the original :py:class:`altapay.Transaction` you reserved on, and a new one for the actual reservation.
 
 As always, see the AltaPay documentation for a list of possible arguments.
+
+.. _guide-working-with-transactions-creating-invoice-reservation:
+
+Creating an Invoice Reservation
++++++++++++++++++++++++++++++++
+
+In some cases, you might want to create an invoice reservation without first creating a Payment object. This could be if you do not want to redirect your customer to the payment provider for validation. In the example of Klarna payments, if you provide the customer's personal identification number together with the normal payment parameters, you can complete the transaction without further confirmation.
+
+**Note that this might require approval by the invoice company you are using**
+
+As always, see the full list of possible arguments in the AltaPay documentation.
+
+.. code :: python
+
+    from altapay import Transaction
+
+    parameters = {
+        'terminal': 'AltaPay Test Terminal',
+        'shop_orderid': 'asdf23',
+        'amount': 20.0,
+        'currency': 'EUR',
+        'customer_info': {
+            'billing_postal': '1234',
+            'billing_address': 'Test Street',
+            'email': 'foo@bar.com'
+        },
+        'personalIdentifyNumber': '123456-1234'
+    }
+
+    transaction = Transaction.create_invoice_reservation(
+        api=self.api, **parameters)

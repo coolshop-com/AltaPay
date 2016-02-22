@@ -112,3 +112,28 @@ class PaymentTest(TestCase):
         self.assertEqual(len(callback.transactions()), 2)
         for transaction in callback.transactions():
             self.assertIsInstance(transaction, Transaction)
+
+    @responses.activate
+    def test_create_invoice_reservation(self):
+        responses.add(
+            responses.GET, self.get_api_url('API/createInvoiceReservation'),
+            body=self.load_xml_response('200_create_invoice_reservation.xml'),
+            status=200, content_type='application/xml')
+
+        parameters = {
+            'terminal': 'AltaPay Test Terminal',
+            'shop_orderid': 'asdf23',
+            'amount': 20.0,
+            'currency': 'EUR',
+            'customer_info': {
+                'billing_postal': '1234',
+                'billing_address': 'Test Street',
+                'email': 'foo@bar.com'
+            },
+            'personalIdentifyNumber': '123456-1234'
+        }
+
+        transaction = Transaction.create_invoice_reservation(
+            api=self.api, **parameters)
+
+        self.assertIsInstance(transaction, Transaction)

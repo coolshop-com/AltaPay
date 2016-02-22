@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<APIResponse version="20110831">
+  <Header>
+    <Date>2011-10-20T11:50:09+02:00</Date>
+    <Path>API/createInvoiceReservation</Path>
+    <ErrorCode>0</ErrorCode>
+    <ErrorMessage></ErrorMessage>
+  </Header>
+  <Body>
+    <Result>Success</Result>
+    <Transactions>
+      <Transaction>
+        <TransactionId>416</TransactionId>
+        <PaymentId>ccc1479c-37f9-4962-8d2c-662d75117e9d</PaymentId>
+        <CardStatus>NoCreditCard</CardStatus>
+        <CreditCardToken />
+        <CreditCardMaskedPan />
+        <ThreeDSecureResult>Not_Applicable</ThreeDSecureResult>
+        <LiableForChargeback>Merchant</LiableForChargeback>
+        <BlacklistToken/>
+        <ShopOrderId>asdf23</ShopOrderId>
+        <Shop>AltaPay Test Shop</Shop>
+        <Terminal>AltaPay Test Terminal</Terminal>
+        <TransactionStatus>invoice_initialized</TransactionStatus>
+        <ReasonCode>NONE</ReasonCode>
+        <MerchantCurrency>978</MerchantCurrency>
+      <MerchantCurrencyAlpha>EUR</MerchantCurrencyAlpha>
+      <CardHolderCurrency>978</CardHolderCurrency>
+      <CardHolderCurrencyAlpha>EUR</CardHolderCurrencyAlpha>
+        <ReservedAmount>20</ReservedAmount>
+        <CapturedAmount>0</CapturedAmount>
+        <RefundedAmount>0</RefundedAmount>
+        <RecurringDefaultAmount>0</RecurringDefaultAmount>
+        <CreatedDate>2011-10-20 11:50:09</CreatedDate>
+        <UpdatedDate>2011-10-20 11:50:09</UpdatedDate>
+        <PaymentNature>CreditCard</PaymentNature>
+        <PaymentNatureService name="TestAcquirer">
+          <SupportsRefunds>true</SupportsRefunds>
+          <SupportsRelease>true</SupportsRelease>
+          <SupportsMultipleCaptures>true</SupportsMultipleCaptures>
+          <SupportsMultipleRefunds>false</SupportsMultipleRefunds>
+        </PaymentNatureService>
+        <PaymentNature>Invoice</PaymentNature>
+        <PaymentInfos />
+        <CustomerInfo/>
+        <ReconciliationIdentifiers />
+      </Transaction>
+    </Transactions>
+  </Body>
+</APIResponse>
