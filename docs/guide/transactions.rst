@@ -102,7 +102,7 @@ As always, see the full list of possible arguments in the AltaPay documentation.
 
 .. code :: python
 
-    from altapay import Transaction
+    from altapay import Callback
 
     parameters = {
         'terminal': 'AltaPay Test Terminal',
@@ -117,5 +117,4 @@ As always, see the full list of possible arguments in the AltaPay documentation.
         'personalIdentifyNumber': '123456-1234'
     }
 
-    transaction = Transaction.create_invoice_reservation(
-        api=self.api, **parameters)
+    transaction = Callback.create_invoice_reservation(api=api, **parameters)

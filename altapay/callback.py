@@ -43,6 +43,30 @@ class Callback(Resource):
             for transaction in transaction_set]
 
     @classmethod
+    def create_invoice_reservation(cls, terminal, shop_orderid, amount,
+                                   currency, api, **kwargs):
+        """
+        Create a new invoice without first creating a payment.
+
+        :rtype: :py:class:`altapay.Transaction`
+        """
+        parameters = {
+            'terminal': terminal,
+            'shop_orderid': shop_orderid,
+            'amount': amount,
+            'currency': currency
+        }
+
+        parameters.update(kwargs)
+
+        response = api.get(
+            'API/createInvoiceReservation', parameters=parameters
+        )['APIResponse']
+
+        return cls(
+            response['@version'], response['Header'], response['Body'])
+
+    @classmethod
     def from_xml_callback(cls, callback):
         """
         Instantiate a :py:class:`altapay.Callback` object from an XML response.

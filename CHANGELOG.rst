@@ -1,6 +1,13 @@
 Change Log
 ----------
 
+1.0.dev9 (2015-02-26)
++++++++++++++++++++++
+
+**Improvements**
+
+- **Backwards incompatible** Moved ``altapay.Transaction.create_invoice_reservation()`` to ``altapay.Callback.create_invoice_reservation()``. The method will now return a ``altapay.Callback`` object in order to read the result key (#41)
+
 1.0.dev8 (2015-02-22)
 +++++++++++++++++++++
 
