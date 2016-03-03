@@ -26,15 +26,21 @@ Dependencies
 
 Installation
 ============
-To come
+The easiest way is using pip.
+
+.. code:: python
+
+    pip install altapay
 
 Getting Started
 ===============
-To come
+Refer to the `introduction on the documentation <http://altapay.readthedocs.org/en/latest/>`_ for some getting started use cases.
 
 Contributing
 ============
-To come
+Currently, this library only implements the bare minimum of the AltaPay API. It will allow you to create payment links, and do basic subscription functionality. If you need anything else, feel free to submit a full request, or if you have ideas, open an issue.
+
+If you do decide to submit a pull request, do note that both isort and flake8 (including pep8-naming) are run for all pull requests. You are also advised to write test cases.
 
 Running the Tests
 +++++++++++++++++
