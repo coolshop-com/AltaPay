@@ -89,6 +89,25 @@ Reserving an amount on a  will return a Callback object that has a list of trans
 
 As always, see the AltaPay documentation for a list of possible arguments.
 
+.. _guide-working-with-transactions-releasing-reservation:
+
+Releasing a Reservation
++++++++++++++++++++++++
+
+In some cases you may choose to not capture your reservation. If so, it's better to release the reservation you have. This is also a good practice in cases where you have a subscription setup on a transaction ID, but you do not have any need for it anymore (for example if your customer cancels their subscription).
+
+Note that there are certain edge cases for calling this method, see the AltaPay documentation for ``API/releaseReservation`` for full details.
+
+.. code :: python
+
+    from altapay import Transaction
+
+    transaction = Transaction.find('TransactionID', api=api)
+    callback = transaction.release()
+
+    if callback.result != 'Success':
+        raise Exception('Could not release the reservation')
+
 .. _guide-working-with-transactions-creating-invoice-reservation:
 
 Creating an Invoice Reservation

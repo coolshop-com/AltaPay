@@ -74,7 +74,7 @@ class Callback(Resource):
         :rtype: :py:class:`altapay.Callback` instance.
         """
         if isinstance(callback, str):
-            callback = ElementTree.XML(callback)
+            callback = ElementTree.XML(callback.encode('utf-8'))
             response = utils.etree_to_dict(callback)['APIResponse']
         elif isinstance(callback, ElementTree.Element):
             response = utils.etree_to_dict(callback)['APIResponse']

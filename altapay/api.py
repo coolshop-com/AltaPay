@@ -125,7 +125,8 @@ class API(object):
         logger.debug('Content: ' + content)
 
         if status in (200, 201):
-            return utils.etree_to_dict(ElementTree.XML(content))
+            return utils.etree_to_dict(
+                ElementTree.XML(content.encode('utf-8')))
         elif status == 401:
             raise exceptions.UnauthorizedAccessError(
                 'Credentials could not be validated against the AltaPay '

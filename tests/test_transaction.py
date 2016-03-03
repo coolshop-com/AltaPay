@@ -112,3 +112,22 @@ class PaymentTest(TestCase):
         self.assertEqual(len(callback.transactions()), 2)
         for transaction in callback.transactions():
             self.assertIsInstance(transaction, Transaction)
+
+    @responses.activate
+    def test_release_reservation(self):
+        responses.add(
+            responses.GET, self.get_api_url('API/payments'),
+            body=self.load_xml_response('200_find_transaction_single.xml'),
+            status=200, content_type='application/xml')
+
+        transaction = Transaction.find('TEST-TRANSACTION-ID', self.api)
+
+        responses.add(
+            responses.GET, self.get_api_url('API/releaseReservation'),
+            body=self.load_xml_response('200_release_reservation.xml'),
+            status=200, content_type='application/xml')
+
+        callback = transaction.release()
+
+        self.assertEqual(callback.result, 'Success')
+        self.assertEqual(len(callback.transactions()), 1)

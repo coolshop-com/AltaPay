@@ -109,3 +109,21 @@ class Transaction(Resource):
             parameters=parameters)['APIResponse']
 
         return altapay.callback.Callback.from_xml_callback(response)
+
+    def release(self):
+        """
+        This will release the reservation on the transaction. This is useful
+        if you for whatever reason do not want to capture the payment.
+
+        Refer to the AltaPay documentation for edge cases surround this method.
+
+        :rtype: :py:class:`altapay.Callback` object.
+        """
+        parameters = {
+            'transaction_id': self.transaction_id
+        }
+
+        response = self.api.get(
+            'API/releaseReservation', parameters=parameters)['APIResponse']
+
+        return altapay.callback.Callback.from_xml_callback(response)

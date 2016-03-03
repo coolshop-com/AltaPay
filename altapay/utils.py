@@ -75,7 +75,7 @@ def xml_to_dict(xml):
 
     :rtype: :samp:`dict`
     """
-    return etree_to_dict(ElementTree.XML(xml))
+    return etree_to_dict(ElementTree.XML(xml.encode('utf-8')))
 
 
 def etree_to_dict(tree):

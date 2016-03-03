@@ -1,6 +1,15 @@
 Change Log
 ----------
 
+1.0 (2015-03-03)
+++++++++++++++++
+
+**First Production Release**
+
+**Features**
+
+- Addded ``altapay.Transaction.release()``
+
 1.0.dev9 (2015-02-26)
 +++++++++++++++++++++
 
