@@ -61,9 +61,10 @@ class PaymentTest(TestCase):
             body=self.load_xml_response('200_capture_response.xml'),
             status=200, content_type='application/xml')
 
-        transaction = transaction.capture()
+        callback = transaction.capture()
 
-        self.assertEqual(transaction.captured_amount, 13.29)
+        self.assertEqual(
+            callback.transactions()[0].captured_amount, 13.29)
 
     @responses.activate
     def test_charge_subscription_single(self):

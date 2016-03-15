@@ -27,15 +27,15 @@ Once you have an instance of :py:class:`altapay.Transaction`, it is possible to 
     from altapay import Transaction
 
     transaction = Transaction.find('TransactionID', api=api)
-    response = transaction.capture()
+    callback = transaction.capture()
 
-    if response.success:
+    if callback.result == 'Success':
         # Capture was successful
         pass
     else:
         raise Exception('Not able to capture')
 
-The response is a bare :py:class:`altapay.Resource` and will contain the full response returned by AltaPay.
+The response is an :py:class:`altapay.Callback` object and will contain the full response returned by AltaPay.
 
 Of course, this is often not the desired behaviour. You can provider further information to :py:func:`altapay.Transaction.capture` as described in the AltaPay API of :samp:`API/captureReservation`. For example, you can capture a partial amount in the following way, which also shows how to supply an order line.
 

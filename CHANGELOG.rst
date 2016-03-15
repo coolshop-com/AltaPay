@@ -1,7 +1,14 @@
 Change Log
 ----------
 
-1.0 (2015-03-03)
+1.0.1 (2016-03-15)
+++++++++++++++++++
+
+**API Change**
+
+- **Backwards incompatible** ``altapay.Transaction.capture()`` will now return an ``altapay.Callback`` object instead of a ``altapay.Transaction`` object
+
+1.0 (2016-03-03)
 ++++++++++++++++
 
 **First Production Release**
@@ -10,35 +17,35 @@ Change Log
 
 - Addded ``altapay.Transaction.release()``
 
-1.0.dev9 (2015-02-26)
+1.0.dev9 (2016-02-26)
 +++++++++++++++++++++
 
 **Improvements**
 
 - **Backwards incompatible** Moved ``altapay.Transaction.create_invoice_reservation()`` to ``altapay.Callback.create_invoice_reservation()``. The method will now return a ``altapay.Callback`` object in order to read the result key (#41)
 
-1.0.dev8 (2015-02-22)
+1.0.dev8 (2016-02-22)
 +++++++++++++++++++++
 
 **Features**
 
 - Added ``altapay.Transaction.create_invoice_reservation()``
 
-1.0.dev7 (2015-02-17)
+1.0.dev7 (2016-02-17)
 +++++++++++++++++++++
 
 **Improvements**
 
 - **Backwards incompatible** Changed the name of ``altapay.Transaction.reserve()`` to ``altapay.Transaction.reserve_subscription_charge()``
 
-1.0.dev6 (2015-02-17)
+1.0.dev6 (2016-02-17)
 +++++++++++++++++++++
 
 **Features**
 
 - Added ``altapay.Transaction.reserve()`` which will reserve an amount on a subscription
 
-1.0.dev5 (2015-02-11)
+1.0.dev5 (2016-02-11)
 +++++++++++++++++++++
 
 **Improvements**
@@ -46,7 +53,7 @@ Change Log
 - **Backwards incompatible** Changed the return type of ``altapay.Transaction.charge_subscription()``. It will not return a ``altapay.Callback`` object instead of a list of transactions
 - **Backwards incompatible** Changed the argument of ``altapay.Callback.transactions()`` to be keyword only. Will now accept any number of filters, and these will be matched using AND logic
 
-1.0.dev4 (2015-02-03)
+1.0.dev4 (2016-02-03)
 +++++++++++++++++++++
 
 **Features**
@@ -57,7 +64,7 @@ Change Log
 
 - Fixed a bug where looking up a non-existent transaction ID would result in a ``KeyError`` (#32)
 
-0.1.dev3 (2015-01-18)
+0.1.dev3 (2016-01-18)
 +++++++++++++++++++++
 
 **Bugfixes**
@@ -69,7 +76,7 @@ Change Log
 
 - Made it more explicit how attributes on response objects work (#26)
 
-0.1.dev2 (2015-01-14)
+0.1.dev2 (2016-01-14)
 +++++++++++++++++++++
 
 **Features**
@@ -84,7 +91,7 @@ Change Log
 - Fixed a bug where specifying a non-existing terminal while creating an ``altapay.Payment`` object would result in ``altapay.Payment.success`` returning ``True``
 - Fixed a bug where running in production mode was not possible. It is now possible by specifying a shop name when instantiating the API
 
-0.1.dev1 (2015-01-05)
+0.1.dev1 (2016-01-05)
 +++++++++++++++++++++
 
 - Complex payments are now possible. This means it is now possible to send detailed payment information in a Pythonic way using just lists and dictionaries, instead of the PHP style query params syntax

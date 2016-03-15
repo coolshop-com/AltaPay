@@ -43,6 +43,8 @@ class Transaction(Resource):
             AltaPay documentation for a full list.
             Note that you will need to use lists and dictionaries to map the
             URL structures from the AltaPay documentation into these kwargs.
+
+        :rtype: :py:class:`altapay.Callback` object.
         """
         parameters = {
             'transaction_id': self.transaction_id
@@ -53,9 +55,7 @@ class Transaction(Resource):
         response = self.api.get(
             'API/captureReservation', parameters=parameters)['APIResponse']
 
-        return Transaction(
-            response['@version'], response['Header'],
-            response['Body']['Transactions']['Transaction'], api=self.api)
+        return altapay.callback.Callback.from_xml_callback(response)
 
     def charge_subscription(self, **kwargs):
         """
