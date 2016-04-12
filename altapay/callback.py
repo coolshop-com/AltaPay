@@ -59,8 +59,8 @@ class Callback(Resource):
 
         parameters.update(kwargs)
 
-        response = api.get(
-            'API/createInvoiceReservation', parameters=parameters
+        response = api.post(
+            'API/createInvoiceReservation', data=parameters
         )['APIResponse']
 
         return cls(
