@@ -14,7 +14,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_find_transaction_failure(self):
         responses.add(
-            responses.GET, self.get_api_url('API/payments'),
+            responses.POST, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_failure.xml'),
             status=200, content_type='application/xml')
 
@@ -24,7 +24,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_find_transaction_success(self):
         responses.add(
-            responses.GET, self.get_api_url('API/payments'),
+            responses.POST, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_single.xml'),
             status=200, content_type='application/xml')
 
@@ -38,7 +38,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_find_transaction_multiple_resources_error(self):
         responses.add(
-            responses.GET, self.get_api_url('API/payments'),
+            responses.POST, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_multiple.xml'),
             status=200, content_type='application/xml')
 
@@ -48,7 +48,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_capture_transaction_simple(self):
         responses.add(
-            responses.GET, self.get_api_url('API/payments'),
+            responses.POST, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_single.xml'),
             status=200, content_type='application/xml')
 
@@ -57,7 +57,7 @@ class PaymentTest(TestCase):
         self.assertEqual(transaction.captured_amount, 0.0)
 
         responses.add(
-            responses.GET, self.get_api_url('API/captureReservation'),
+            responses.POST, self.get_api_url('API/captureReservation'),
             body=self.load_xml_response('200_capture_response.xml'),
             status=200, content_type='application/xml')
 
@@ -69,7 +69,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_charge_subscription_single(self):
         responses.add(
-            responses.GET, self.get_api_url('API/payments'),
+            responses.POST, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_single.xml'),
             status=200, content_type='application/xml')
 
@@ -78,7 +78,7 @@ class PaymentTest(TestCase):
         transaction = Transaction.find('TEST-TRANSACTION-ID', self.api)
 
         responses.add(
-            responses.GET, self.get_api_url('API/chargeSubscription'),
+            responses.POST, self.get_api_url('API/chargeSubscription'),
             body=self.load_xml_response('200_charge_subscription_single.xml'),
             status=200, content_type='application/xml')
 
@@ -93,7 +93,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_reserve_subscription_single(self):
         responses.add(
-            responses.GET, self.get_api_url('API/payments'),
+            responses.POST, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_single.xml'),
             status=200, content_type='application/xml')
 
@@ -102,7 +102,7 @@ class PaymentTest(TestCase):
         transaction = Transaction.find('TEST-TRANSACTION-ID', self.api)
 
         responses.add(
-            responses.GET, self.get_api_url('API/reserveSubscriptionCharge'),
+            responses.POST, self.get_api_url('API/reserveSubscriptionCharge'),
             body=self.load_xml_response('200_charge_subscription_single.xml'),
             status=200, content_type='application/xml')
 
@@ -117,14 +117,14 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_release_reservation(self):
         responses.add(
-            responses.GET, self.get_api_url('API/payments'),
+            responses.POST, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_single.xml'),
             status=200, content_type='application/xml')
 
         transaction = Transaction.find('TEST-TRANSACTION-ID', self.api)
 
         responses.add(
-            responses.GET, self.get_api_url('API/releaseReservation'),
+            responses.POST, self.get_api_url('API/releaseReservation'),
             body=self.load_xml_response('200_release_reservation.xml'),
             status=200, content_type='application/xml')
 

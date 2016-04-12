@@ -28,7 +28,7 @@ class Payment(Resource):
 
         parameters.update(kwargs)
 
-        response = self.api.get(
-            'API/createPaymentRequest', parameters=parameters)
+        response = self.api.post(
+            'API/createPaymentRequest', data=parameters)
         self.merge_response(response)
         return self.success

@@ -16,8 +16,8 @@ class Transaction(Resource):
 
         :rtype: :py:class:`altapay.Transaction`
         """
-        response = api.get(
-            'API/payments', parameters={'transaction_id': transaction_id}
+        response = api.post(
+            'API/payments', data={'transaction_id': transaction_id}
         )['APIResponse']
 
         try:
@@ -52,8 +52,8 @@ class Transaction(Resource):
 
         parameters.update(kwargs)
 
-        response = self.api.get(
-            'API/captureReservation', parameters=parameters)['APIResponse']
+        response = self.api.post(
+            'API/captureReservation', data=parameters)['APIResponse']
 
         return altapay.callback.Callback.from_xml_callback(response)
 
@@ -78,8 +78,8 @@ class Transaction(Resource):
 
         parameters.update(kwargs)
 
-        response = self.api.get(
-            'API/chargeSubscription', parameters=parameters)['APIResponse']
+        response = self.api.post(
+            'API/chargeSubscription', data=parameters)['APIResponse']
 
         return altapay.callback.Callback.from_xml_callback(response)
 
@@ -104,9 +104,9 @@ class Transaction(Resource):
 
         parameters.update(kwargs)
 
-        response = self.api.get(
+        response = self.api.post(
             'API/reserveSubscriptionCharge',
-            parameters=parameters)['APIResponse']
+            data=parameters)['APIResponse']
 
         return altapay.callback.Callback.from_xml_callback(response)
 
@@ -123,7 +123,7 @@ class Transaction(Resource):
             'transaction_id': self.transaction_id
         }
 
-        response = self.api.get(
-            'API/releaseReservation', parameters=parameters)['APIResponse']
+        response = self.api.post(
+            'API/releaseReservation', data=parameters)['APIResponse']
 
         return altapay.callback.Callback.from_xml_callback(response)

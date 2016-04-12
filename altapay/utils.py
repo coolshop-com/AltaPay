@@ -109,27 +109,7 @@ def etree_to_dict(tree):
     return d
 
 
-def http_build_query(payload):
-    """
-    Build a query string that matches the way PHP does it with
-    :samp:`http_build_query`.
-
-    In output, this function loosely matches what PHP does in the function
-    :samp:`http_build_query`. It handles complex types of both dict and list.
-
-    If :py:class:`collections.OrderedDict` is used, the order of the keys will
-    be preserved in the finalized query string.
-
-    *Note: This is an internal API and may be changed without notice.*
-
-    :arg payload: the payload to convert to a query string. This has to be
-        :samp:`dict` compatible, but can hold lists as values in the
-        dictionary. Nested dictionaries can be used, and lists can hold
-        dictionaries.
-
-    :rtype: :samp:`string` that can be used as a GET parameter for HTTP
-        requests
-    """
+def http_build_query_dict(payload):
     # Here be dragons
     def unpack_dict(value, key=None):
         if isinstance(value, list):
@@ -151,5 +131,28 @@ def http_build_query(payload):
     data = OrderedDict()
     for key, value in payload.items():
         unpack_list(list(unpack_dict(value, key)), data)
+    return data
 
-    return urlencode(data)
+
+def http_build_query(payload):
+    """
+    Build a query string that matches the way PHP does it with
+    :samp:`http_build_query`.
+
+    In output, this function loosely matches what PHP does in the function
+    :samp:`http_build_query`. It handles complex types of both dict and list.
+
+    If :py:class:`collections.OrderedDict` is used, the order of the keys will
+    be preserved in the finalized query string.
+
+    *Note: This is an internal API and may be changed without notice.*
+
+    :arg payload: the payload to convert to a query string. This has to be
+        :samp:`dict` compatible, but can hold lists as values in the
+        dictionary. Nested dictionaries can be used, and lists can hold
+        dictionaries.
+
+    :rtype: :samp:`string` that can be used as a GET parameter for HTTP
+        requests
+    """
+    return urlencode(http_build_query_dict(payload))

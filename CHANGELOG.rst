@@ -1,6 +1,11 @@
 Change Log
 ----------
 
+1.1.0 (2016-04-12)
+++++++++++++++++++
+
+- Previously, all calls would use an HTTP GET, since the AltaPay documentation in some cases suggests that this is the case. This works, however, it breaks when payments start to contain many order lines. Because of this, all calls have been changed to HTTP POST, which is the recommended way of communicating with the AltaPay API.
+
 1.0.1 (2016-03-15)
 ++++++++++++++++++
 

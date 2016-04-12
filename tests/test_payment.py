@@ -14,7 +14,7 @@ class PaymentTest(TestCase):
     def test_create_simple_payment_request(self):
         payment = Payment(api=self.api)
         responses.add(
-            responses.GET, self.get_api_url('API/createPaymentRequest'),
+            responses.POST, self.get_api_url('API/createPaymentRequest'),
             body=self.load_xml_response('200_create_payment.xml'), status=200,
             content_type='application/xml')
         parameters = {

@@ -57,7 +57,7 @@ class CallbackTest(TestCase):
     @responses.activate
     def test_create_invoice_reservation(self):
         responses.add(
-            responses.GET, self.get_api_url('API/createInvoiceReservation'),
+            responses.POST, self.get_api_url('API/createInvoiceReservation'),
             body=self.load_xml_response('200_create_invoice_reservation.xml'),
             status=200, content_type='application/xml')
 

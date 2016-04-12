@@ -81,7 +81,7 @@ class API(object):
         if self._is_authenticated:
             return
 
-        if Resource.create_from_response(self.get('API/login')).success:
+        if Resource.create_from_response(self.post('API/login')).success:
             self._is_authenticated = True
             return
 
@@ -98,23 +98,25 @@ class API(object):
         :rtype: :samp:`True` if a valid response is returned, otherwise
             :samp:`False`.
         """
-        return Resource.create_from_response(self.get('API/testConnection'))
+        return Resource.create_from_response(self.post('API/testConnection'))
 
     def _headers(self):
         return {
             'User-Agent': self.user_agent
         }
 
-    def _request(self, url, method, params={}, headers={}):
+    def _request(self, url, method, params={}, data={}, headers={}):
         logger.debug('Mode: ' + self.mode)
         logger.debug('URL: ' + url)
         logger.debug('Method: ' + method)
         logger.debug('Params: ' + str(params))
+        logger.debug('Data: ' + str(data))
         logger.debug('Headers: ' + str(headers))
         logger.debug('Is authenticated: ' + str(self._is_authenticated))
 
         response = requests.request(
-            method, url, params=params, headers=headers, auth=self._auth)
+            method, url, params=params, data=data, headers=headers,
+            auth=self._auth)
 
         return self._response(response, response.content.decode('utf-8'))
 
@@ -162,4 +164,31 @@ class API(object):
         return self._request(
             urljoin(self.url, resource), 'GET',
             params=utils.http_build_query(parameters),
+            headers=headers or self._headers())
+
+    def post(self, resource, parameters={}, data={}, headers={}):
+        """
+        Perform a POST HTTP requeste on a resource.
+
+        :arg resource: the resource to POST to
+        :arg parameters: a dictionary of GET parameters for the resource
+        :arg data: a dictionary of POST parameters for the resource
+        :arg headers: optional headers. If specified, these will override the
+            default headers.
+
+        :returns:
+            A response from the AltaPay service as a :samp:`dict`.
+
+        :raises:
+            :UnauthorizedAccessError: If the supplied credentials are not
+                valid.
+
+            :ResponseStatusError: If the response code from AltaPay is not a
+                subset of the allowed response codes.
+
+        """
+        return self._request(
+            urljoin(self.url, resource), 'POST',
+            params=utils.http_build_query(parameters),
+            data=utils.http_build_query_dict(data),
             headers=headers or self._headers())

@@ -19,7 +19,7 @@ class APITest(TestCase):
     def test_login_successful(self):
         "Mocks a login response to be successful to test authentication state"
         responses.add(
-            responses.GET, self.get_api_url('API/login'),
+            responses.POST, self.get_api_url('API/login'),
             body=self.load_xml_response('200_login.xml'),
             status=200, content_type='application/xml')
         api = API(
@@ -44,7 +44,7 @@ class APITest(TestCase):
 
         responses.reset()
         responses.add_callback(
-            responses.GET, self.get_api_url('API/login'),
+            responses.POST, self.get_api_url('API/login'),
             callback=http_callback, content_type='application/xml')
         api.login()
         self.assertEqual(getattr(DATA, 'callback_reached', None), None)
@@ -77,17 +77,17 @@ class APITest(TestCase):
     def test_http_response_code_not_supported(self):
         # Use a random unsupported HTTP Status Code here
         responses.add(
-            responses.GET, self.get_api_url('API/notReal'),
+            responses.POST, self.get_api_url('API/notReal'),
             body='', status=402, content_type='application/xml')
         with self.assertRaises(exceptions.ResponseStatusError):
             self.api._request(
-                self.get_api_url('API/notReal'), 'GET')
+                self.get_api_url('API/notReal'), 'POST')
 
     @responses.activate
     def test_http_response_code_500(self):
         responses.add(
-            responses.GET, self.get_api_url('API/notReal'),
+            responses.POST, self.get_api_url('API/notReal'),
             body='', status=500, content_type='application/xml')
         with self.assertRaises(exceptions.ServerError):
             self.api._request(
-                self.get_api_url('API/notReal'), 'GET')
+                self.get_api_url('API/notReal'), 'POST')
