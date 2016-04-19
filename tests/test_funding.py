@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 import os
 
 import responses
-from altapay import API, Funding, FundingList, exceptions
+from altapay import API, CustomReport, Funding, FundingList, exceptions
 
 from .test_cases import TestCase
 
@@ -75,3 +75,34 @@ class FundingTest(TestCase):
             content = fd.read()
         self.assertEqual(content, funding.content())
         os.remove(filepath)
+
+
+class CustomReportTest(TestCase):
+    @responses.activate
+    def setUp(self):
+        self.api = API(mode='test', auto_login=False)
+        url = '{}?id={}&from_date={}&to_date={}'.format(
+            self.get_api_url('API/getCustomReport'),
+            'ABCDEF',
+            '2016-01-01',
+            '2016-01-05')
+        # Use the standard funding file response, any CSV could go here
+        responses.add(
+            responses.GET, url,
+            body=self.load_xml_response('200_funding.csv'),
+            status=200, content_type='text/plain',
+            match_querystring=True)
+        self.report = CustomReport(
+            'ABCDEF', self.api, from_date='2016-01-01', to_date='2016-01-05')
+
+    def test_content(self):
+        self.assertGreater(len(self.report.content()), 1)
+
+    def test_download(self):
+        filename = './test.csv'
+        self.report.download(filename)
+        content = None
+        with open(filename, 'rb') as fd:
+            content = fd.read()
+        self.assertEqual(content, self.report.content())
+        os.remove(filename)

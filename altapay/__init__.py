@@ -10,7 +10,7 @@ __api_base_url__ = {
 
 from altapay.api import API  # NOQA
 from altapay.callback import Callback  # NOQA
-from altapay.funding import Funding, FundingList  # NOQA
+from altapay.funding import CustomReport, Funding, FundingList  # NOQA
 from altapay.payment import Payment  # NOQA
 from altapay.resource import Resource  # NOQA
 from altapay.transaction import Transaction  # NOQA
