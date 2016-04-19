@@ -4,6 +4,7 @@ import logging
 import os
 import platform
 import ssl
+from io import BytesIO
 from xml.etree import ElementTree
 
 import requests
@@ -192,3 +193,14 @@ class API(object):
             params=utils.http_build_query(parameters),
             data=utils.http_build_query_dict(data),
             headers=headers or self._headers())
+
+    def download(self, resource, parameters={}, headers={}):
+        """
+        Downloads a resource. Acts as a custom HTTP GET.
+        Not that it is considered the callers responsibility to actually
+        flush/close the stream.
+        """
+        response = requests.get(
+            resource, params=utils.http_build_query(parameters), stream=True,
+            headers=headers or self._headers(), auth=self._auth)
+        return BytesIO(response.content)
