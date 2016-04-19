@@ -6,7 +6,8 @@ Change Log
 
 **Features***
 
-- Added ``altapay.FundingList`` and ``altapay.Funding``. These two objects will interact with the funding list features of AltaPay, and will allow you to both list all of your funding files, as well as download individual files. Currently no guide section is written on the subject, but full API documentation is available.
+- Added ``altapay.FundingList`` and ``altapay.Funding``. These two objects will interact with the funding list features of AltaPay, and will allow you to both list all of your funding files, as well as download individual files. Currently no guide section is written on the subject, but full API documentation is available
+- Added ``altapay.CustomReport`` which mimics the custom reporting module of AltaPay. Using a custom report ID and additional kwargs based on the report, you can either view or download your custom reports
 
 1.1.0 (2016-04-12)
 ++++++++++++++++++

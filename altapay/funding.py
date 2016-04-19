@@ -2,12 +2,54 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 
+from six.moves.urllib.parse import urljoin
+
 from altapay import exceptions
 from altapay.callback import Callback
 from altapay.resource import Resource
 
 
+class CustomReport(object):
+    """
+    Custom AltaPay report.
+    """
+
+    def __init__(self, report_id, api, **kwargs):
+        """
+        Access a custom AltaPay report.
+
+        :arg report_id: ID if the AltaPay report
+        :arg kwargs: additional parameters that needs to be passed to the
+            report, e.g. from_date and to_date
+        """
+        parameters = {
+            'id': report_id
+        }
+        parameters.update(kwargs)
+        self._content = api.download(
+            urljoin(api.url, 'API/getCustomReport'),
+            parameters=parameters).read()
+
+    def download(self, filename):
+        """
+        Download the CSV report.
+
+        :arg filename: full filename including path where the report will be
+            downloaded.
+        """
+        with open(filename, 'wb') as fd:
+            fd.write(self.content())
+
+    def content(self):
+        """The report content as bytes."""
+        return self._content
+
+
 class Funding(Resource):
+    """
+    A funding file that can be either viewed or downloaded.
+    """
+
     def download(self, save_to):
         """
         Download the CSV funding file.
@@ -29,6 +71,10 @@ class Funding(Resource):
 
 
 class FundingList(object):
+    """
+    A list of funding files to paginate through.
+    """
+
     _fundings = []
     _current_page = 0
     _api = None
