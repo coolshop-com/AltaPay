@@ -11,8 +11,8 @@ class Transaction(Resource):
         """
         Find exactly one transaction by a transaction ID.
 
-        :param transaction_id: ID of the transaction in AltaPay
-        :param api: An API object which will be used for AltaPay communication.
+        :arg transaction_id: ID of the transaction in AltaPay
+        :arg api: An API object which will be used for AltaPay communication.
 
         :rtype: :py:class:`altapay.Transaction`
         """
@@ -39,7 +39,7 @@ class Transaction(Resource):
         """
         Capture a reservation on a transaction.
 
-        :param \*\*kwargs: used for optional capture parameters, see the
+        :arg \*\*kwargs: used for optional capture parameters, see the
             AltaPay documentation for a full list.
             Note that you will need to use lists and dictionaries to map the
             URL structures from the AltaPay documentation into these kwargs.
@@ -65,7 +65,7 @@ class Transaction(Resource):
         If amount is not sent as an optinal parameter, the amount specified in
         the original setup of the subscription will be used.
 
-        :param \*\*kwargs: used for optional charge subscription parameters,
+        :arg \*\*kwargs: used for optional charge subscription parameters,
             see the AltaPay documentation for a full list.
             Note that you will need to use lists and dictionaries to map the
             URL structures from the AltaPay documentation into these kwargs.
@@ -91,7 +91,7 @@ class Transaction(Resource):
         If amount is not sent as an optinal parameter, the amount specified in
         the original setup of the subscription will be used.
 
-        :param \*\*kwargs: used for optional reserve subscription parameters,
+        :arg \*\*kwargs: used for optional reserve subscription parameters,
             see the AltaPay documentation for a full list.
             Note that you will need to use lists and dictionaries to map the
             URL structures from the AltaPay documentation into these kwargs.

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<APIResponse version="20100929">
+   <Header>
+      <Date>2010-09-29T12:34:56+02:00</Date>
+      <Path>API/fundingList</Path>
+      <ErrorCode>0</ErrorCode>
+      <ErrorMessage></ErrorMessage>
+   </Header>
+   <Body>
+      <Fundings numberOfPages="2">
+         <Funding>
+            <Filename>CreatedByTest</Filename>
+            <ContractIdentifier>1234567890123456</ContractIdentifier>
+            <Shops>
+               <Shop>AltaPay Functional Test Shop</Shop>
+               <Shop>AltaPay Functional Test Shop Two</Shop>
+            </Shops>
+            <Acquirer>TestAcquirer</Acquirer>
+            <FundingDate>2010-09-26</FundingDate>
+            <Amount>50.00 EUR</Amount>
+            <CreatedDate>2010-09-27</CreatedDate>
+            <DownloadLink>
+               https://testgateway.altapaysecure.com/merchant/API/fundingDownload?id=1
+            </DownloadLink>
+         </Funding>
+         <Funding>
+            <Filename>CreatedByTest2</Filename>
+            <ContractIdentifier>1234567890123456</ContractIdentifier>
+            <Shops>
+               <Shop>AltaPay Functional Test Shop</Shop>
+               <Shop>AltaPay Functional Test Shop Two</Shop>
+            </Shops>
+            <Acquirer>TestAcquirer</Acquirer>
+            <FundingDate>2010-09-26</FundingDate>
+            <Amount>50.00 EUR</Amount>
+            <CreatedDate>2010-09-27</CreatedDate>
+            <DownloadLink>
+               https://testgateway.altapaysecure.com/merchant/API/fundingDownload?id=2
+            </DownloadLink>
+         </Funding>
+      </Fundings>
+   </Body>
+</APIResponse>

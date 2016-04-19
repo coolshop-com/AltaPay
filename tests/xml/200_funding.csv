@@ -1,0 +1,2 @@
+Date;Type;ID;"Reconciliation Identifier";Payment;Order;Terminal;Shop;"Transaction Currency";"Transaction Amount";"Exchange Rate";"Settlement Currency";"Settlement Amount";"Fixed Fee";"Fixed Fee VAT";"Rate Based Fee";"Rate Based Fee VAT"
+"2010-09-22 00:00:00";payment;5;3f664acc-c71d-45e6-8c6a-a15838451a77;5;"settlement functional4c9a127b159a0";"AltaPay Test Terminal";"AltaPay Functional Test Shop";EUR;50.00;100.000000;EUR;50.00;;;;

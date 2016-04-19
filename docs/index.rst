@@ -41,6 +41,7 @@ API Documentation
    api/payment
    api/callback
    api/transaction
+   api/funding
    api/exceptions
    api/utils
 

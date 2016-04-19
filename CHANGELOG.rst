@@ -1,6 +1,13 @@
 Change Log
 ----------
 
+1.2.0 (2016-04-19)
+++++++++++++++++++
+
+**Features***
+
+- Added ``altapay.FundingList`` and ``altapay.Funding``. These two objects will interact with the funding list features of AltaPay, and will allow you to both list all of your funding files, as well as download individual files. Currently no guide section is written on the subject, but full API documentation is available.
+
 1.1.0 (2016-04-12)
 ++++++++++++++++++
 
