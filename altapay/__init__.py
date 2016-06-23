@@ -15,3 +15,4 @@ from altapay.funding import CustomReport, Funding, FundingList  # NOQA
 from altapay.payment import Payment  # NOQA
 from altapay.resource import Resource  # NOQA
 from altapay.transaction import Transaction  # NOQA
+from altapay.invoice import Invoice  # NOQA
