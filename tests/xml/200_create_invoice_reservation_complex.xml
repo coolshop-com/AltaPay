@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<APIResponse version="20151228">
+    <Header>
+        <Date>2016-06-14T13:25:33+02:00</Date>
+        <Path>API/createInvoiceReservation</Path>
+        <ErrorCode>0</ErrorCode>
+        <ErrorMessage/>
+    </Header>
+    <Body>
+        <Result>Success</Result>
+        <Transactions>
+            <Transaction>
+                <TransactionId>374</TransactionId>
+                <PaymentId>c15c2ef0-b0f2-43fd-94a7-b151cbf9d48f</PaymentId>
+                <AuthType>payment</AuthType>
+                <CardStatus>NoCreditCard</CardStatus>
+                <CreditCardToken/>
+                <CreditCardMaskedPan/>
+                <ThreeDSecureResult>Not_Applicable</ThreeDSecureResult>
+                <LiableForChargeback>Merchant</LiableForChargeback>
+                <CVVCheckResult>Not_Applicable</CVVCheckResult>
+                <BlacklistToken/>
+                <ShopOrderId>444555 complex invoice</ShopOrderId>
+                <Shop>AltaPay Functional Test Shop</Shop>
+                <Terminal>AltaPay Test Invoice Terminal DK</Terminal>
+                <TransactionStatus>invoice_initialized</TransactionStatus>
+                <ReasonCode>NONE</ReasonCode>
+                <MerchantCurrency>208</MerchantCurrency>
+                <MerchantCurrencyAlpha>DKK</MerchantCurrencyAlpha>
+                <CardHolderCurrency>208</CardHolderCurrency>
+                <CardHolderCurrencyAlpha>DKK</CardHolderCurrencyAlpha>
+                <ReservedAmount>666.66</ReservedAmount>
+                <CapturedAmount>0.00</CapturedAmount>
+                <RefundedAmount>0.00</RefundedAmount>
+                <CreditedAmount>0.00</CreditedAmount>
+                <RecurringDefaultAmount>0.00</RecurringDefaultAmount>
+                <SurchargeAmount>0.00</SurchargeAmount>
+                <CreatedDate>2016-06-14 13:25:33</CreatedDate>
+                <UpdatedDate>2016-06-14 13:25:33</UpdatedDate>
+                <PaymentNature>Invoice</PaymentNature>
+                <PaymentSchemeName>Test Invoice</PaymentSchemeName>
+                <PaymentNatureService name="TestInvoiceAcquirer">
+                    <SupportsRefunds>true</SupportsRefunds>
+                    <SupportsRelease>true</SupportsRelease>
+                    <SupportsMultipleCaptures>true</SupportsMultipleCaptures>
+                    <SupportsMultipleRefunds>true</SupportsMultipleRefunds>
+                </PaymentNatureService>
+                <ChargebackEvents/>
+                <PaymentInfos>
+                    <PaymentInfo name="ArbitraryInfo1">
+                        <![CDATA[ArbitraryInfo2]]>
+                    </PaymentInfo>
+                </PaymentInfos>
+                <CustomerInfo>
+                    <UserAgent/>
+                    <IpAddress/>
+                    <Email>
+                        <![CDATA[customer@email.com]]>
+                    </Email>
+                    <Username>
+                        <![CDATA[leatheruser]]>
+                    </Username>
+                    <CustomerPhone>4512345678</CustomerPhone>
+                    <OrganisationNumber/>
+                    <CountryOfOrigin>
+                        <Country>Bat Country</Country>
+                        <Source>RegisteredAddress</Source>
+                    </CountryOfOrigin>
+                    <BillingAddress>
+                        <Firstname>
+                            <![CDATA[Bruce]]>
+                        </Firstname>
+                        <Lastname>
+                            <![CDATA[Wayne]]>
+                        </Lastname>
+                        <Address>
+                            <![CDATA[101 Night Street]]>
+                        </Address>
+                        <City>
+                            <![CDATA[Gotham City]]>
+                        </City>
+                        <Region>
+                            <![CDATA[Dark Region]]>
+                        </Region>
+                        <Country>
+                            <![CDATA[Bat Country]]>
+                        </Country>
+                        <PostalCode>
+                            <![CDATA[123]]>
+                        </PostalCode>
+                    </BillingAddress>
+                    <ShippingAddress>
+                        <Firstname>
+                            <![CDATA[Jack]]>
+                        </Firstname>
+                        <Lastname>
+                            <![CDATA[Napier]]>
+                        </Lastname>
+                        <Address>
+                            <![CDATA[42 Joker Avenue]]>
+                        </Address>
+                        <City>
+                            <![CDATA[Big Smile City]]>
+                        </City>
+                        <Region>
+                            <![CDATA[Umbrella Neighbourhood]]>
+                        </Region>
+                        <Country>
+                            <![CDATA[Laughistan]]>
+                        </Country>
+                        <PostalCode>
+                            <![CDATA[002]]>
+                        </PostalCode>
+                    </ShippingAddress>
+                    <RegisteredAddress>
+                        <Firstname>
+                            <![CDATA[Bruce]]>
+                        </Firstname>
+                        <Lastname>
+                            <![CDATA[Wayne]]>
+                        </Lastname>
+                        <Address>
+                            <![CDATA[101 Night Street]]>
+                        </Address>
+                        <City>
+                            <![CDATA[Gotham City]]>
+                        </City>
+                        <Region/>
+                        <Country>
+                            <![CDATA[Bat Country]]>
+                        </Country>
+                        <PostalCode>
+                            <![CDATA[001]]>
+                        </PostalCode>
+                    </RegisteredAddress>
+                </CustomerInfo>
+                <ReconciliationIdentifiers/>
+            </Transaction>
+        </Transactions>
+    </Body>
+</APIResponse>
