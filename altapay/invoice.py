@@ -1,9 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
-from altapay.resource import Resource
+from altapay.payment import Payment
 
 
-class Invoice(Resource):
+class Invoice(Payment):
     def create(self, terminal, shop_orderid, amount, currency, **kwargs):
         """
         Create a invoice reservation request.
@@ -19,18 +19,9 @@ class Invoice(Resource):
 
         :rtype: :samp:`True` if a payment was created, otherwise :samp:`False`.
         """
-        parameters = {
-            'terminal': terminal,
-            'shop_orderid': shop_orderid,
-            'amount': amount,
-            'currency': currency,
-        }
 
-        parameters.update(kwargs)
+        return super(Invoice, self).create(terminal, shop_orderid,
+                                           amount, currency, **kwargs)
 
-        response = self.api.post(
-            'API/createInvoiceReservation', data=parameters)
-
-        self.merge_response(response)
-
-        return self.success
+    def get_post_url(self):
+        return 'API/createInvoiceReservation'
