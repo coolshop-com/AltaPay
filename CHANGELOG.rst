@@ -1,6 +1,13 @@
 Change Log
 ----------
 
+1.2.1 (2016-11-02)
+++++++++++++++++++
+
+**Bugfix**
+
+- Fixed a bug where parsing the values "nan", "inf" or "-inf" would lead to a float value, when handling XML values. While this could potentially be correct, it's safer to assume that these values are in fact string values
+
 1.2.0 (2016-04-19)
 ++++++++++++++++++
 
