@@ -80,3 +80,17 @@ class CallbackTest(TestCase):
         self.assertIsInstance(callback, Callback)
         self.assertIsInstance(callback.transactions(), list)
         self.assertIsInstance(callback.transactions()[0], Transaction)
+
+    def test_epayment_cancelled(self):
+        callback = Callback.from_xml_callback(
+            self.load_xml_response('200_epayment_cancelled.xml'))
+
+        transactions = callback.transactions()
+
+        self.assertIsInstance(transactions, list)
+        self.assertEqual(len(transactions), 1)
+        self.assertIsInstance(transactions[0], Transaction)
+
+        self.assertEqual('Cancelled', callback.result)
+        self.assertEqual('epayment_cancelled',
+                         transactions[0].transaction_status)
