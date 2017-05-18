@@ -1,4 +1,4 @@
-
+from __future__ import absolute_import, unicode_literals
 
 from altapay import utils
 
@@ -58,7 +58,7 @@ class Resource(object):
         return name in self.__data__
 
     def merge(self, attributes):
-        for key, value in list(attributes.items()):
+        for key, value in attributes.items():
             setattr(
                 self, utils.to_pythonic_name(key),
                 utils.to_pythonic_dict(value)

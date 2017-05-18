@@ -8,7 +8,7 @@ functionality.
 """
 import os
 from unittest import SkipTest, TestCase  # NOQA
-from .xml.etree import ElementTree
+from xml.etree import ElementTree
 
 from six.moves.urllib.parse import urljoin
 

@@ -1,4 +1,4 @@
-
+from __future__ import absolute_import, unicode_literals
 
 from xml.etree import ElementTree
 
@@ -18,7 +18,7 @@ class Callback(Resource):
         :rtype: List of :py:class:`altapay.Transaction` objects.
         """
         def _check_value(element, **kwargs):
-            for key, value in list(element.items()):
+            for key, value in element.items():
                 check_key = utils.to_pythonic_name(key)
                 check_value = kwargs.pop(check_key, '')
                 if check_value and element[key] != check_value:
