@@ -1,4 +1,4 @@
-
+from __future__ import absolute_import, unicode_literals
 
 import re
 from collections import OrderedDict, defaultdict
@@ -31,7 +31,7 @@ def to_pythonic_dict(dictionary):
     return {
         to_pythonic_name(k): (
             to_pythonic_dict(v) if isinstance(v, dict) else v)
-        for k, v in list(dictionary.items())
+        for k, v in dictionary.items()
     }
 
 
@@ -89,18 +89,18 @@ def etree_to_dict(tree):
     if children:
         dd = defaultdict(list)
         for dc in map(etree_to_dict, children):
-            for k, v in list(dc.items()):
+            for k, v in dc.items():
                 dd[k].append(handle_xml_value(v))
         d = {
             tree.tag: {
                 k: handle_xml_value(v[0])
                 if len(v) == 1 else handle_xml_value(v)
-                for k, v in list(dd.items())
+                for k, v in dd.items()
             }
         }
     if tree.attrib:
         d[tree.tag].update(
-            ('@' + k, handle_xml_value(v)) for k, v in list(tree.attrib.items()))
+            ('@' + k, handle_xml_value(v)) for k, v in tree.attrib.items())
     if tree.text:
         text = tree.text.strip()
         if children or tree.attrib:
@@ -118,7 +118,7 @@ def http_build_query_dict(payload):
             for i, elem in enumerate(value):
                 yield list(unpack_dict(elem, key='{}[{}]'.format(key, i)))
         elif isinstance(value, dict):
-            for k, v in list(value.items()):
+            for k, v in value.items():
                 yield list(unpack_dict(v, key='{}[{}]'.format(key, k)))
         else:
             yield key, text_type(value)
@@ -131,7 +131,7 @@ def http_build_query_dict(payload):
                 data[elem[0]] = elem[1]
 
     data = OrderedDict()
-    for key, value in list(payload.items()):
+    for key, value in payload.items():
         unpack_list(list(unpack_dict(value, key)), data)
     return data
 
