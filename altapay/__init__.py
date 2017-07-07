@@ -15,3 +15,4 @@ from altapay.payment import Payment  # NOQA
 from altapay.resource import Resource  # NOQA
 from altapay.transaction import Transaction  # NOQA
 from altapay.invoice import Invoice  # NOQA
+from altapay.update_order import UpdateOrder  # NOQA
