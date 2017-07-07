@@ -88,3 +88,11 @@ class Resource(object):
     @property
     def success(self):
         return self.error['code'] == 0
+
+    @property
+    def error_message(self):
+        return self.error['message']
+
+    @property
+    def error_code(self):
+        return self.error['code']
