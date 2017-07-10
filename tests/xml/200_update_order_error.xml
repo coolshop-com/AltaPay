@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<APIResponse version="20170228">
+    <Header>
+        <Date>2017-07-10T11:32:30+02:00</Date>
+        <Path>API/updateOrder</Path>
+        <ErrorCode>10000001</ErrorCode>
+        <ErrorMessage>Number of original order lines and updated ones does not match.</ErrorMessage>
+    </Header>
+    <Body/>
+</APIResponse>

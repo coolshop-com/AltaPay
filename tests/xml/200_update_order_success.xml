@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<APIResponse version="20170228">
+   <Header>
+      <Date>2010-09-29T12:34:56+02:00</Date>
+      <Path>API/updateOrder</Path>
+      <ErrorCode>0</ErrorCode>
+      <ErrorMessage></ErrorMessage>
+   </Header>
+   <Body>
+      <Result>Success</Result>
+   </Body>
+</APIResponse>
