@@ -29,6 +29,10 @@ class UpdateOrder(Resource):
         (the ones to be replaced) must be set with negative quantity
         :rtype: :samp:`True` in the case of a success, otherwise :samp:`False`.
         """
+
+        if len(order_lines) != 2:
+            raise Exception("order_lines must contain 2 elements")
+
         parameters = {
             'payment_id': payment_id,
             'orderLines': order_lines
