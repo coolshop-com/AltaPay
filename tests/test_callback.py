@@ -94,3 +94,26 @@ class CallbackTest(TestCase):
         self.assertEqual('Cancelled', callback.result)
         self.assertEqual('epayment_cancelled',
                          transactions[0].transaction_status)
+
+    def test_read_body_messages(self):
+
+        callback = Callback.from_xml_callback(
+            self.load_xml_response('CardHolderMessageMustBeShownFalse.xml'))
+        self.assertEqual('Failed', callback.result)
+        self.assertEqual('TestAcquirer[pan=0466 or amount=4660]',
+                         callback.merchant_error_message)
+        self.assertEqual('Card Declined', callback.card_holder_error_message)
+        self.assertEqual(False, callback.card_holder_message_must_be_shown)
+
+        callback = Callback.from_xml_callback(
+            self.load_xml_response('CardHolderMessageMustBeShownTrue.xml'))
+        self.assertEqual(True, callback.card_holder_message_must_be_shown)
+
+    def test_read_reason_code(self):
+
+        callback = Callback.from_xml_callback(
+            self.load_xml_response('ReasonCode.xml'))
+
+        transactions = callback.transactions()
+
+        self.assertEqual('NONE', transactions[0].reason_code)
