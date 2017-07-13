@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<APIResponse version="20170228">
+    <Header>
+        <Date>2017-07-05T11:50:45+02:00</Date>
+        <Path>API/reservationOfFixedAmount3DSecureVerification</Path>
+        <ErrorCode>0</ErrorCode>
+        <ErrorMessage/>
+    </Header>
+    <Body>
+        <Result>Failed</Result>
+        <MerchantErrorMessage>TestAcquirer[pan=0466 or amount=4660]</MerchantErrorMessage>
+        <CardHolderErrorMessage>Card Declined</CardHolderErrorMessage>
+        <CardHolderMessageMustBeShown>false</CardHolderMessageMustBeShown>
+        <Transactions>
+            <Transaction>
+                <TransactionId>20341981</TransactionId>
+                <PaymentId>17794956-9bb6-4854-9712-bce5931e6e3a</PaymentId>
+                <AuthType>paymentAndCapture</AuthType>
+                <CardStatus>Expired</CardStatus>
+                <CreditCardExpiry>
+                    <Year>2017</Year>
+                    <Month>01</Month>
+                </CreditCardExpiry>
+                <CreditCardToken>2685df5ccacc32330848ba7626d329a166585996</CreditCardToken>
+                <CreditCardMaskedPan>414000******0466</CreditCardMaskedPan>
+                <ThreeDSecureResult>Not_Attempted</ThreeDSecureResult>
+                <LiableForChargeback>Merchant</LiableForChargeback>
+                <CVVCheckResult>Not_Attempted</CVVCheckResult>
+                <BlacklistToken>61c62b85fb8ed03518c524891a92cd515cb64c32</BlacklistToken>
+                <ShopOrderId>1bf7ddd2-d335-42c6-b5ab-0a6f4faff22d</ShopOrderId>
+                <Shop>Caxton FX</Shop>
+                <Terminal>Caxton FX Test Terminal</Terminal>
+                <TransactionStatus>3dsecure_failed</TransactionStatus>
+                <ReasonCode>NONE</ReasonCode>
+                <MerchantCurrency>826</MerchantCurrency>
+                <MerchantCurrencyAlpha>GBP</MerchantCurrencyAlpha>
+                <CardHolderCurrency>826</CardHolderCurrency>
+                <CardHolderCurrencyAlpha>GBP</CardHolderCurrencyAlpha>
+                <ReservedAmount>0.00</ReservedAmount>
+                <CapturedAmount>0.00</CapturedAmount>
+                <RefundedAmount>0.00</RefundedAmount>
+                <CreditedAmount>0.00</CreditedAmount>
+                <RecurringDefaultAmount>0.00</RecurringDefaultAmount>
+                <SurchargeAmount>0.00</SurchargeAmount>
+                <CreatedDate>2017-07-05 11:50:41</CreatedDate>
+                <UpdatedDate>2017-07-05 11:50:45</UpdatedDate>
+                <PaymentNature>CreditCard</PaymentNature>
+                <PaymentSchemeName>Visa</PaymentSchemeName>
+                <PaymentNatureService name="SoapTestAcquirer">
+                    <SupportsRefunds>true</SupportsRefunds>
+                    <SupportsRelease>true</SupportsRelease>
+                    <SupportsMultipleCaptures>true</SupportsMultipleCaptures>
+                    <SupportsMultipleRefunds>true</SupportsMultipleRefunds>
+                </PaymentNatureService>
+                <AddressVerification>P</AddressVerification>
+                <AddressVerificationDescription>Postal codes match for international transaction. Street address not verified due to incompatible formats</AddressVerificationDescription>
+                <ChargebackEvents/>
+                <PaymentInfos>
+                    <PaymentInfo name="UserName">
+                        <![CDATA[EOCUDFRN@mailinator.com]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="AffiliateCode"/>
+                    <PaymentInfo name="TradeType">
+                        <![CDATA[NormalTrade]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="TransferType">
+                        <![CDATA[NoTransfer]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="UseCurrencyBalancePayment">
+                        <![CDATA[False]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="UseBankPayment">
+                        <![CDATA[False]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="UseCardPayment">
+                        <![CDATA[True]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="ModuleName">
+                        <![CDATA[Fastpay]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="SavePaymentCard">
+                        <![CDATA[True]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="AmountToPayByCard">
+                        <![CDATA[100.00]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="SellCurrencyCode">
+                        <![CDATA[GBP]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="IsAutomatic">
+                        <![CDATA[True]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="AttemptCount">
+                        <![CDATA[0]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="SelectedCardType">
+                        <![CDATA[-1]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="IsSafeList">
+                        <![CDATA[False]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="IsHelpDeskUser">
+                        <![CDATA[False]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="HelpDeskUserName"/>
+                    <PaymentInfo name="IsConfigOverriden">
+                        <![CDATA[False]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="IsMOTO">
+                        <![CDATA[False]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="AccountTypeRef">
+                        <![CDATA[Retail]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="OfferRedeemed">
+                        <![CDATA[False]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="QuoteId">
+                        <![CDATA[265193]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="SellCurrency">
+                        <![CDATA[GBP]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="SellAmount">
+                        <![CDATA[100.00]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="BuyCurrency">
+                        <![CDATA[EUR]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="BuyAmount">
+                        <![CDATA[111.77]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="Profit">
+                        <![CDATA[2.00]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="QuoteExchangeRate">
+                        <![CDATA[1.12]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="RedeemedOffers">
+                        <![CDATA[[]]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="CreditCardToken">
+                        <![CDATA[162b67af5cc2b4a737a0d6192fa8be3b5db9e6c5]]>
+                    </PaymentInfo>
+                </PaymentInfos>
+                <CustomerInfo>
+                    <UserAgent>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36</UserAgent>
+                    <IpAddress>31.221.7.34</IpAddress>
+                    <Email>
+                        <![CDATA[EOCUDFRN@mailinator.com]]>
+                    </Email>
+                    <Username>
+                        <![CDATA[Testwtiniurepkwfikuu Autosndcyzbv]]>
+                    </Username>
+                    <CustomerPhone/>
+                    <OrganisationNumber/>
+                    <CountryOfOrigin>
+                        <Country>GB</Country>
+                        <Source>BillingAddress</Source>
+                    </CountryOfOrigin>
+                    <BillingAddress>
+                        <Firstname>
+                            <![CDATA[Testwtiniurepkwfikuu]]>
+                        </Firstname>
+                        <Lastname>
+                            <![CDATA[Autosndcyzbv]]>
+                        </Lastname>
+                        <Address>
+                            <![CDATA[Portland House Bressenden Place]]>
+                        </Address>
+                        <City>
+                            <![CDATA[London]]>
+                        </City>
+                        <Region/>
+                        <Country>
+                            <![CDATA[GB]]>
+                        </Country>
+                        <PostalCode>
+                            <![CDATA[SW1E 5BH]]>
+                        </PostalCode>
+                    </BillingAddress>
+                </CustomerInfo>
+                <ReconciliationIdentifiers/>
+            </Transaction>
+        </Transactions>
+    </Body>
+</APIResponse>
