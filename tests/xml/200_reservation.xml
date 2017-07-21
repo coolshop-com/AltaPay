@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<APIResponse version="20170228">
+    <Header>
+        <Date>2017-07-21T13:24:28+02:00</Date>
+        <Path>API/reservation</Path>
+        <ErrorCode>0</ErrorCode>
+        <ErrorMessage/>
+    </Header>
+    <Body>
+        <Result>Success</Result>
+        <Transactions>
+            <Transaction>
+                <TransactionId>992</TransactionId>
+                <PaymentId>258d5355-e5b9-4fe7-ac95-b6dce8440a2d</PaymentId>
+                <AuthType>paymentAndCapture</AuthType>
+                <CardStatus>Valid</CardStatus>
+                <CreditCardExpiry>
+                    <Year>2018</Year>
+                    <Month>01</Month>
+                </CreditCardExpiry>
+                <CreditCardToken>4d544ccfb87acda4be1ce699dd9944164251fdd5</CreditCardToken>
+                <CreditCardMaskedPan>411100******0002</CreditCardMaskedPan>
+                <ThreeDSecureResult>Not_Attempted</ThreeDSecureResult>
+                <LiableForChargeback>Merchant</LiableForChargeback>
+                <CVVCheckResult>Not_Attempted</CVVCheckResult>
+                <BlacklistToken>ce66f1e99c1cbaa736541cafba9d902ec1cb213e</BlacklistToken>
+                <ShopOrderId>ReservationTest_1500636267075</ShopOrderId>
+                <Shop>AltaPay Shop Integration</Shop>
+                <Terminal>AltaPay Soap Test Terminal</Terminal>
+                <TransactionStatus>captured</TransactionStatus>
+                <ReasonCode>NONE</ReasonCode>
+                <MerchantCurrency>208</MerchantCurrency>
+                <MerchantCurrencyAlpha>DKK</MerchantCurrencyAlpha>
+                <CardHolderCurrency>208</CardHolderCurrency>
+                <CardHolderCurrencyAlpha>DKK</CardHolderCurrencyAlpha>
+                <ReservedAmount>1.23</ReservedAmount>
+                <CapturedAmount>1.23</CapturedAmount>
+                <RefundedAmount>0.00</RefundedAmount>
+                <CreditedAmount>0.00</CreditedAmount>
+                <RecurringDefaultAmount>0.00</RecurringDefaultAmount>
+                <SurchargeAmount>0.00</SurchargeAmount>
+                <CreatedDate>2017-07-21 13:24:27</CreatedDate>
+                <UpdatedDate>2017-07-21 13:24:27</UpdatedDate>
+                <PaymentNature>CreditCard</PaymentNature>
+                <PaymentSchemeName>Visa</PaymentSchemeName>
+                <PaymentNatureService name="SoapTestAcquirer">
+                    <SupportsRefunds>true</SupportsRefunds>
+                    <SupportsRelease>true</SupportsRelease>
+                    <SupportsMultipleCaptures>true</SupportsMultipleCaptures>
+                    <SupportsMultipleRefunds>true</SupportsMultipleRefunds>
+                </PaymentNatureService>
+                <FraudRiskScore>1</FraudRiskScore>
+                <FraudExplanation>For the test fraud service the risk score is always equal mod 101 of the created amount for the payment</FraudExplanation>
+                <FraudRecommendation>Accept</FraudRecommendation>
+                <AddressVerification>b</AddressVerification>
+                <AddressVerificationDescription>Invalid address verification response code</AddressVerificationDescription>
+                <ChargebackEvents/>
+                <PaymentInfos>
+                    <PaymentInfo name="info1">
+                        <![CDATA[desc1]]>
+                    </PaymentInfo>
+                    <PaymentInfo name="info2">
+                        <![CDATA[desc2]]>
+                    </PaymentInfo>
+                </PaymentInfos>
+                <CustomerInfo>
+                    <UserAgent>Java/1.7.0_80</UserAgent>
+                    <IpAddress/>
+                    <Email>
+                        <![CDATA[my@e.mail]]>
+                    </Email>
+                    <Username>
+                        <![CDATA[username]]>
+                    </Username>
+                    <CustomerPhone>phone</CustomerPhone>
+                    <OrganisationNumber/>
+                    <CountryOfOrigin>
+                        <Country>US</Country>
+                        <Source>CardNumber</Source>
+                    </CountryOfOrigin>
+                    <BillingAddress>
+                        <Firstname>
+                            <![CDATA[billing first name]]>
+                        </Firstname>
+                        <Lastname>
+                            <![CDATA[billing last name]]>
+                        </Lastname>
+                        <Address>
+                            <![CDATA[billing address]]>
+                        </Address>
+                        <City>
+                            <![CDATA[billing city]]>
+                        </City>
+                        <Region>
+                            <![CDATA[billing region]]>
+                        </Region>
+                        <Country>
+                            <![CDATA[DK]]>
+                        </Country>
+                        <PostalCode>
+                            <![CDATA[billing postal]]>
+                        </PostalCode>
+                    </BillingAddress>
+                    <ShippingAddress>
+                        <Firstname>
+                            <![CDATA[shipping first name]]>
+                        </Firstname>
+                        <Lastname>
+                            <![CDATA[shipping last name]]>
+                        </Lastname>
+                        <Address>
+                            <![CDATA[shipping address]]>
+                        </Address>
+                        <City>
+                            <![CDATA[shipping city]]>
+                        </City>
+                        <Region>
+                            <![CDATA[shipping region]]>
+                        </Region>
+                        <Country>
+                            <![CDATA[DK]]>
+                        </Country>
+                        <PostalCode>
+                            <![CDATA[shipping postal]]>
+                        </PostalCode>
+                    </ShippingAddress>
+                </CustomerInfo>
+                <ReconciliationIdentifiers>
+                    <ReconciliationIdentifier>
+                        <Id>7a555d65-409a-4d88-abdb-cb6a5b2a26dd</Id>
+                        <Amount currency="208">1.23</Amount>
+                        <Type>captured</Type>
+                        <Date>2017-07-21T13:24:27+02:00</Date>
+                    </ReconciliationIdentifier>
+                </ReconciliationIdentifiers>
+            </Transaction>
+        </Transactions>
+    </Body>
+</APIResponse>
