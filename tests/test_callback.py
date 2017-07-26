@@ -117,3 +117,12 @@ class CallbackTest(TestCase):
         transactions = callback.transactions()
 
         self.assertEqual('NONE', transactions[0].reason_code)
+
+    def test_read_payment_id(self):
+        callback = Callback.from_xml_callback(
+            self.load_xml_response('ReasonCode.xml'))
+
+        transactions = callback.transactions()
+
+        self.assertEqual('17794956-9bb6-4854-9712-bce5931e6e3a',
+                         transactions[0].payment_id)
