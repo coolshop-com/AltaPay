@@ -1,5 +1,5 @@
 __title__ = 'altapay'
-__version__ = '1.2.1'
+__version__ = '1.3.0'
 __author__ = 'Coolshop.com'
 __license__ = 'MIT'
 __github_url__ = 'https://github.com/coolshop-com/AltaPay'
