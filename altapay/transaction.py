@@ -57,6 +57,28 @@ class Transaction(Resource):
 
         return altapay.callback.Callback.from_xml_callback(response)
 
+    def refund(self, **kwargs):
+        """
+        Refund full or partial payments on an order.
+
+        :arg \*\*kwargs: used for optional refund parameters, see the
+            AltaPay documentation for a full list.
+            Note that you will need to use lists and dictionaries to map the
+            URL structures from the AltaPay documentation into these kwargs.
+
+        :rtype: :py:class:`altapay.Callback` object.
+        """
+        parameters = {
+            'transaction_id': self.transaction_id
+        }
+
+        parameters.update(kwargs)
+
+        response = self.api.post(
+            'API/refundCapturedReservation', data=parameters)['APIResponse']
+
+        return altapay.callback.Callback.from_xml_callback(response)
+
     def charge_subscription(self, **kwargs):
         """
         This will charge a subscription using a capture. Can be called many
