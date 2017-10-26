@@ -103,7 +103,8 @@ class API(object):
 
     def _headers(self):
         return {
-            'User-Agent': self.user_agent
+            'User-Agent': self.user_agent,
+            'x-altapay-client-version': __version__
         }
 
     def _request(self, url, method, params={}, data={}, headers={}):
