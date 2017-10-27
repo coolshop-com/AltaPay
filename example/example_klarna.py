@@ -7,9 +7,24 @@ Klarna test script.
 
 """
 
+import sys, random
+
+# Update this with real path and uncomment before use, please
+# sys.path.append('/absolute_path_to/python-client-library')
+
+
+#sdk path check
+sdkPathExists = False
+for path in sys.path:
+    if path.endswith("/python-client-library"):
+        sdkPathExists=True
+if sdkPathExists is False:
+    print "Path to python-client-library does not exist, update your environment variable, or put sys.path.append('/absolute_path_to/python-cliend-library') before including altapay sdk modules"
+    sys.exit()
+
 from altapay import API, Payment
 
-import random, sys
+
 
 # These lines are only necessary because we are using utf-8 characters in the billing address:
 reload(sys)
