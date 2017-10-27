@@ -1,3 +1,5 @@
+
+
 #!/usr/bin/python
 
 """
@@ -5,6 +7,21 @@
 Klarna test script: capture and update an existing order.
 
 """
+
+import sys
+
+# Update this with real path and uncomment before use, please
+# sys.path.append('/absolute_path_to/python-client-library')
+
+
+#sdk path check
+sdkPathExists = False
+for path in sys.path:
+    if path.endswith("/python-client-library"):
+        sdkPathExists=True
+if sdkPathExists is False:
+    print "Path to python-client-library does not exist, update your environment variable, or put sys.path.append('/absolute_path_to/python-cliend-library') before including altapay sdk modules"
+    sys.exit()
 
 from altapay import API, UpdateOrder, Transaction
 
