@@ -1,5 +1,12 @@
 Change Log
 ----------
+1.2.1 (2017-10-27)
++++++++++++++++++++++
+
+**Improvements**
+
+- Absolute path for the module needs be appended to the sys.path; A check point has been added
+- Capture test case has been added as example 
 
 1.2.0 (2016-04-19)
 ++++++++++++++++++
