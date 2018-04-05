@@ -34,6 +34,7 @@
         <CreatedDate>2011-10-20 11:50:09</CreatedDate>
         <UpdatedDate>2011-10-20 11:50:09</UpdatedDate>
         <PaymentNature>CreditCard</PaymentNature>
+        <PaymentSource>eCommerce</PaymentSource>
         <PaymentNatureService name="TestAcquirer">
           <SupportsRefunds>true</SupportsRefunds>
           <SupportsRelease>true</SupportsRelease>

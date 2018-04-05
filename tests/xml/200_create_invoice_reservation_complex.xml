@@ -39,6 +39,7 @@
                 <UpdatedDate>2016-06-14 13:25:33</UpdatedDate>
                 <PaymentNature>Invoice</PaymentNature>
                 <PaymentSchemeName>Test Invoice</PaymentSchemeName>
+                <PaymentSource>eCommerce</PaymentSource>
                 <PaymentNatureService name="TestInvoiceAcquirer">
                     <SupportsRefunds>true</SupportsRefunds>
                     <SupportsRelease>true</SupportsRelease>
