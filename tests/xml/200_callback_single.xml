@@ -43,6 +43,7 @@
                 <CreatedDate>2016-01-12 11:13:11</CreatedDate>
                 <UpdatedDate>2016-01-12 11:13:11</UpdatedDate>
                 <PaymentNature>CreditCard</PaymentNature>
+                <PaymentSource>eCommerce</PaymentSource>
                 <PaymentSchemeName>Maestro</PaymentSchemeName>
                 <PaymentNatureService name="SoapTestAcquirer">
                     <SupportsRefunds>true</SupportsRefunds>
