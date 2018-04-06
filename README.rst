@@ -21,6 +21,7 @@ Other versions of Python may also be supported, but these are the only versions 
 
 Dependencies
 ++++++++++++
+- responses
 - requests
 - six
 
