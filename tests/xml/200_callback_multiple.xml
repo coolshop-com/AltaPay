@@ -19,7 +19,7 @@
                     <Year>2016</Year>
                     <Month>01</Month>
                 </CreditCardExpiry>
-                <CreditCardToken>e48a3bb37ab9e2aeb935b42a3c37d1dd42be768b</CreditCardToken>
+                <CreditCardToken>bm7oq1BTQrUINK9jkHbQkWBvJ+El8faY2I/JvlnwaMODBfLc73Egbag1mcmJiaXj8YUn24GIacHcK1JOdS4QKg==+1</CreditCardToken>
                 <CreditCardMaskedPan>500000******0000</CreditCardMaskedPan>
                 <ThreeDSecureResult>Not_Attempted</ThreeDSecureResult>
                 <LiableForChargeback>Merchant</LiableForChargeback>
