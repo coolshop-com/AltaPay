@@ -14,7 +14,7 @@
             <TransactionId>1</TransactionId>
             <PaymentId>ccc1479c-37f9-4962-8d2c-662d75117e9d</PaymentId>
             <CardStatus>Valid</CardStatus>
-            <CreditCardToken>93f534a2f5d66d6ab3f16c8a7bb7e852656d4bb2</CreditCardToken>
+            <CreditCardToken>bm7oq1BTQrUINK9jkHbQkWBvJ+El8faY2I/JvlnwaMODBfLc73Egbag1mcmJiaXj8YUn24GIacHcK1JOdS4QKg==+1</CreditCardToken>
             <CreditCardMaskedPan>411111******1111</CreditCardMaskedPan>
             <ThreeDSecureResult>Not_Applicable</ThreeDSecureResult>
             <LiableForChargeback>Merchant</LiableForChargeback>
