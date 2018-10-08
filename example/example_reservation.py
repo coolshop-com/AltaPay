@@ -87,7 +87,6 @@ print res.success
 print res.error_message
 
 
-
 print "--- CAPTURE ---"
 #parse transaction from reservation response object
 transaction = res.__data__.values()[1]["transaction"]
