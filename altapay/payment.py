@@ -12,7 +12,7 @@ class Payment(Resource):
         :arg shop_orderid: your order ID to be attached to the payment resource
         :arg amount: order amount in floating point
         :arg currency: currency for the payment resource
-        :arg \*\*kwargs: used for remaining, optional, payment request
+        :arg kwargs: used for remaining, optional, payment request
             parameters, see the AltaPay documentation for a full list.
             Note that you will need to use lists and dictionaries to map the
             URL structures from the AltaPay documentation into these kwargs.
