@@ -1,6 +1,13 @@
 Change Log
 ----------
 
+1.4.0 (2019-06-24)
+++++++++++++++++++
+
+**Features**
+
+- Added ``altapay.Transaction.chargebacks()`` which returns the chargeback events as custom objects.
+
 1.3.0 (2017-10-20)
 ++++++++++++++++++
 
