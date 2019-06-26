@@ -1,6 +1,13 @@
 Change Log
 ----------
 
+1.4.1 (2019-06-26)
+++++++++++++++++++
+
+** Python support **
+
+- As of version 1.4.0, Python versions below 3.5 are no longer supported.
+
 1.4.0 (2019-06-24)
 ++++++++++++++++++
 
