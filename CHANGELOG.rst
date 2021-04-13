@@ -1,5 +1,27 @@
 Change Log
 ----------
+
+1.4.1 (2019-06-26)
+++++++++++++++++++
+
+** Python support **
+
+- As of version 1.4.0, Python versions below 3.5 are no longer supported.
+
+1.4.0 (2019-06-24)
+++++++++++++++++++
+
+**Features**
+
+- Added ``altapay.Transaction.chargebacks()`` which returns the chargeback events as custom objects.
+
+1.3.0 (2017-10-20)
+++++++++++++++++++
+
+**Features**
+
+- Added ``altapay.Transaction.refund()`` with functionality for refunding a transaction, both full and partial.
+
 1.2.1 (2017-10-27)
 +++++++++++++++++++++
 
@@ -7,6 +29,13 @@ Change Log
 
 - Absolute path for the module needs be appended to the sys.path; A check point has been added
 - Capture test case has been added as example 
+
+1.2.1 (2016-11-02)
+++++++++++++++++++
+
+**Bugfix**
+
+- Fixed a bug where parsing the values "nan", "inf" or "-inf" would lead to a float value, when handling XML values. While this could potentially be correct, it's safer to assume that these values are in fact string values
 
 1.2.0 (2016-04-19)
 ++++++++++++++++++

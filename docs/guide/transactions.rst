@@ -37,7 +37,7 @@ Once you have an instance of :py:class:`altapay.Transaction`, it is possible to 
 
 The response is an :py:class:`altapay.Callback` object and will contain the full response returned by AltaPay.
 
-Of course, this is often not the desired behaviour. You can provider further information to :py:func:`altapay.Transaction.capture` as described in the AltaPay API of :samp:`API/captureReservation`. For example, you can capture a partial amount in the following way, which also shows how to supply an order line.
+Of course, this is often not the desired behaviour. You can provide further information to :py:func:`altapay.Transaction.capture` as described in the AltaPay API of :samp:`API/captureReservation`. For example, you can capture a partial amount in the following way, which also shows how to supply an order line.
 
 .. code :: python
 
@@ -137,3 +137,36 @@ As always, see the full list of possible arguments in the AltaPay documentation.
     }
 
     transaction = Callback.create_invoice_reservation(api=api, **parameters)
+
+Refunding Transactions
+++++++++++++++++++++++
+
+When a transaction has been captured you might want to refund it again, fully or partial. This could be if the customer wants to return the order. The process is very similar to capturing a transaction.
+
+See the AltaPay documentation for ``API/refundCapturedReservation`` for full details.
+
+.. code :: python
+
+    from altapay import Transaction
+
+    transaction = Transaction.find('TransactionID', api=api)
+    callback = transaction.refund()
+
+    if callback.result != 'Success':
+        raise Exception('Not able to refund')
+
+Partial refunds can be performed in the following way, which also shows how to supply an order line. Notice that not providing an ``amount`` will result in a full return of the transaction.
+
+        .. code :: python
+
+            from altapay import Transaction
+
+            transaction = Transaction.find('TransactionID', api=api)
+            respnse = transaction.capture(
+                orderLines=[{
+                    'description': 'Blue Shirt',
+                    'itemId': '12345',
+                    'quantity': 1.0,
+                    'unitPrice': 19.95
+                }],
+                amount=19.95)

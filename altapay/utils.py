@@ -60,6 +60,8 @@ def handle_xml_value(value):
         return False
     elif value.isdigit():
         return int(value)
+    elif value.lower() in ('nan', 'inf', '-inf'):
+        return value
 
     try:
         return float(value)

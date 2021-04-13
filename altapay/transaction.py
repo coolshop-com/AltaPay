@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import altapay.callback
+import altapay.chargeback
 from altapay import exceptions
 from altapay.resource import Resource
 
@@ -39,7 +40,7 @@ class Transaction(Resource):
         """
         Capture a reservation on a transaction.
 
-        :arg \*\*kwargs: used for optional capture parameters, see the
+        :arg kwargs: used for optional capture parameters, see the
             AltaPay documentation for a full list.
             Note that you will need to use lists and dictionaries to map the
             URL structures from the AltaPay documentation into these kwargs.
@@ -57,6 +58,28 @@ class Transaction(Resource):
 
         return altapay.callback.Callback.from_xml_callback(response)
 
+    def refund(self, **kwargs):
+        """
+        Refund full or partial payments on an order.
+
+        :arg kwargs: used for optional refund parameters, see the
+            AltaPay documentation for a full list.
+            Note that you will need to use lists and dictionaries to map the
+            URL structures from the AltaPay documentation into these kwargs.
+
+        :rtype: :py:class:`altapay.Callback` object.
+        """
+        parameters = {
+            'transaction_id': self.transaction_id
+        }
+
+        parameters.update(kwargs)
+
+        response = self.api.post(
+            'API/refundCapturedReservation', data=parameters)['APIResponse']
+
+        return altapay.callback.Callback.from_xml_callback(response)
+
     def charge_subscription(self, **kwargs):
         """
         This will charge a subscription using a capture. Can be called many
@@ -65,7 +88,7 @@ class Transaction(Resource):
         If amount is not sent as an optinal parameter, the amount specified in
         the original setup of the subscription will be used.
 
-        :arg \*\*kwargs: used for optional charge subscription parameters,
+        :arg kwargs: used for optional charge subscription parameters,
             see the AltaPay documentation for a full list.
             Note that you will need to use lists and dictionaries to map the
             URL structures from the AltaPay documentation into these kwargs.
@@ -91,7 +114,7 @@ class Transaction(Resource):
         If amount is not sent as an optinal parameter, the amount specified in
         the original setup of the subscription will be used.
 
-        :arg \*\*kwargs: used for optional reserve subscription parameters,
+        :arg kwargs: used for optional reserve subscription parameters,
             see the AltaPay documentation for a full list.
             Note that you will need to use lists and dictionaries to map the
             URL structures from the AltaPay documentation into these kwargs.
@@ -127,3 +150,15 @@ class Transaction(Resource):
             'API/releaseReservation', data=parameters)['APIResponse']
 
         return altapay.callback.Callback.from_xml_callback(response)
+
+    def chargebacks(self):
+        data = self.chargeback_events['chargeback_event']
+
+        if not isinstance(data, list):
+            data = [data]
+
+        # Use dummy ChargebackEvent objects for making response pythonic
+        return [
+            altapay.chargeback.ChargebackEvent(body=chargeback)
+            for chargeback in data
+        ]

@@ -7,7 +7,7 @@
 .. image:: https://img.shields.io/pypi/v/altapay.svg
     :target: https://pypi.python.org/pypi/altapay
 
-This is an unofficial Python SDK for AltaPay (formerly Pensio), https://altapay.com/. The SDK is maintained by Coolshop.com, https://www.coolshop.com/.
+This is an unofficial Python SDK for Valitor (formerly AltaPay/Pensio), https://altapay.com/. The SDK is maintained by Coolshop.com, https://www.coolshop.com/.
 
 Documentation
 =============
@@ -15,7 +15,7 @@ Documentation
 
 Requirements
 ============
-- Python (2.7, 3.3, 3.4, 3.5)
+- Python (3.5, 3.6, 3.7)
 
 Other versions of Python may also be supported, but these are the only versions we test against.
 
