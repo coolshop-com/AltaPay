@@ -1,6 +1,14 @@
 Change Log
 ----------
 
+1.5.0 (2021-05-21)
++++++++++++++++++++++
+
+**Improvements**
+
+- Absolute path for the module needs be appended to the sys.path; A check point has been added
+- Capture test case has been added as example
+
 1.4.1 (2019-06-26)
 ++++++++++++++++++
 
@@ -21,14 +29,6 @@ Change Log
 **Features**
 
 - Added ``altapay.Transaction.refund()`` with functionality for refunding a transaction, both full and partial.
-
-1.2.1 (2017-10-27)
-+++++++++++++++++++++
-
-**Improvements**
-
-- Absolute path for the module needs be appended to the sys.path; A check point has been added
-- Capture test case has been added as example 
 
 1.2.1 (2016-11-02)
 ++++++++++++++++++
