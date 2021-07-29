@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import responses
+
 from altapay import API, Callback, Transaction
 from altapay.exceptions import MultipleResourcesError, ResourceNotFoundError
 

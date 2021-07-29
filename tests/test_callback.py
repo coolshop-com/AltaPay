@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from xml.etree import ElementTree
 
 import responses
+
 from altapay import API, Callback, Transaction
 
 from .test_cases import TestCase

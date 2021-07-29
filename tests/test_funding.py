@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import os
 
 import responses
+
 from altapay import API, CustomReport, Funding, FundingList, exceptions
 
 from .test_cases import TestCase
