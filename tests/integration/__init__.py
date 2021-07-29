@@ -1,0 +1,5 @@
+altapay_account = ''
+altapay_password = ''
+altapay_url = ''
+altapay_test_terminal_name = ''
+altapay_invoice_test_terminal_name = ''
