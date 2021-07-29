@@ -271,10 +271,9 @@ class APITest(unittest.TestCase):
             'currency': 'DKK'
         }
 
-        reverse_result = transaction\
-            .reserve_subscription_charge(**transaction_params)
+        resp = transaction.reserve_subscription_charge(**transaction_params)
 
-        self.assertEqual(reverse_result.result, "Success")
+        self.assertEqual(resp.result, "Success")
 
     def test_funding_list(self):
         print("--- FUNDING LIST ---")
