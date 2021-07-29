@@ -26,6 +26,7 @@ with open('CHANGELOG.rst', 'r') as f:
     changelog = f.read()
 
 requires = [
+    'responses',
     'requests',
     'six'
 ]
