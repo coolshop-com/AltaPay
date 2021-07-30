@@ -121,7 +121,6 @@ class APITest(unittest.TestCase):
         self.assertEqual(len(callback.transactions()), 1)
 
     def test_refund_reservation(self):
-        print("--- REFUND ---")
         reservation = Reservation(api=self.api)
         date_today = date.today()
         order_id = generate_order_id()
