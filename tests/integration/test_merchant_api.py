@@ -5,7 +5,7 @@ from datetime import date
 
 from altapay import (API, Funding, FundingList, Invoice, Payment, Reservation,
                      Transaction)
-from tests.integration import (altapay_account,
+from tests.integration import (altapay_account, altapay_contract_identifier,
                                altapay_invoice_test_terminal_name,
                                altapay_password, altapay_test_terminal_name,
                                altapay_url)
@@ -261,7 +261,7 @@ class APITest(unittest.TestCase):
             funding_list.next_page()
             self.assertGreater(len(funding_list.fundings), 0)
         contract_identifier = funding_list.fundings[-1].contract_identifier
-        self.assertEqual(contract_identifier, 'EmbraceIT')
+        self.assertEqual(contract_identifier, altapay_contract_identifier)
 
     def test_funding_list_download(self):
         funding_list = FundingList(api=self.api)
