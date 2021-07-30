@@ -15,7 +15,7 @@ Documentation
 
 Requirements
 ============
-- Python (3.5, 3.6, 3.7)
+- Python (3.5, 3.6, 3.7, 3.8)
 
 Other versions of Python may also be supported, but these are the only versions we test against.
 
@@ -52,3 +52,8 @@ First of all, have `tox <http://tox.readthedocs.org/en/latest/>`_ installed on y
     tox
 
 This will run all tests, against all supported Python versions.
+
+For running integration tests, go to test/integration/__init__.py and set all required values.
+Then run the below command
+
+`python3 -m unittest test_merchant_api.py`

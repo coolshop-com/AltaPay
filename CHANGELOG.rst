@@ -1,13 +1,24 @@
 Change Log
 ----------
 
-1.5.0 (2021-05-21)
+1.5.0 (2021-07-30)
 +++++++++++++++++++++
 
 **Improvements**
 
-- Absolute path for the module needs be appended to the sys.path; A check point has been added
-- Capture test case has been added as example
+- Absolute path for the module needs be appended to the sys.path; A check point has been added.
+- Capture test case has been added as example.
+
+**Features**
+
+- Supports API changes from 20210324
+- Added integration tests for merchant APIs.
+- Added support for Python version 3.8.x
+
+**Bugfix**
+
+- Fixed PEP 8 code styling issues.
+
 
 1.4.1 (2019-06-26)
 ++++++++++++++++++
