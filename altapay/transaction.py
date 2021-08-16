@@ -85,7 +85,7 @@ class Transaction(Resource):
         This will charge a subscription using a capture. Can be called many
         times on a subscription.
 
-        If amount is not sent as an optinal parameter, the amount specified in
+        If amount is not sent as an optional parameter, the amount specified in
         the original setup of the subscription will be used.
 
         :arg kwargs: used for optional charge subscription parameters,
@@ -111,7 +111,7 @@ class Transaction(Resource):
         This will create a reservation on a subscription. Can be called many
         times on a subscription.
 
-        If amount is not sent as an optinal parameter, the amount specified in
+        If amount is not sent as an optional parameter, the amount specified in
         the original setup of the subscription will be used.
 
         :arg kwargs: used for optional reserve subscription parameters,

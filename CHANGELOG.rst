@@ -1,13 +1,24 @@
 Change Log
 ----------
 
-1.5.0 (2021-05-21)
+1.5.0 (2021-07-30)
 +++++++++++++++++++++
 
 **Improvements**
 
-- Absolute path for the module needs be appended to the sys.path; A check point has been added
-- Capture test case has been added as example
+- Absolute path for the module needs be appended to the sys.path; A check point has been added.
+- Capture test case has been added as example.
+
+**Features**
+
+- Supports API changes from 20210324
+- Added integration tests for merchant APIs.
+- Added support for Python version 3.8.x
+
+**Bugfix**
+
+- Fixed PEP 8 code styling issues.
+
 
 1.4.1 (2019-06-26)
 ++++++++++++++++++
@@ -131,7 +142,7 @@ Change Log
 **Features**
 
 - Added ``altapay.Transaction`` and the ability to find a transaction by its transaction ID in the AltaPay service
-- Added ``altapay.Transaction.capture()`` which captures a transaction that has already been loaded. Optinally, parameters can be passed which allows for partial captures (see the AltaPay documentation for full list of possible arguments)
+- Added ``altapay.Transaction.capture()`` which captures a transaction that has already been loaded. Optionally, parameters can be passed which allows for partial captures (see the AltaPay documentation for full list of possible arguments)
 - Added a public facing API for converting an AltaPay XML response (as a string) to a Python dictionary (``altapay.utils.xml_to_dict``)
 - Added ``altapay.Callback`` which wraps a callback response from AltaPay, and automatically wraps the coupled transactions in ``altapay.Transaction`` objects
 
