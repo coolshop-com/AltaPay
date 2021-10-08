@@ -62,12 +62,12 @@ See [Changelog](CHANGELOG.rst) for all the release notes.
 License
 =======
 
-Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+Distributed under the MIT License. See `LICENSE <LICENSE>`_ for more information.
 
 Documentation
 =============
 
-For more details please see [AltaPay docs](http://altapay.readthedocs.org/en/latest/)
+For more details please see `AltaPay docs <http://altapay.readthedocs.org/en/latest/>`_
 
 Contact
 =======
