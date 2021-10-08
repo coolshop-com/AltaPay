@@ -57,7 +57,7 @@ Then run the below command
 Changelog
 =========
 
-See [Changelog](CHANGELOG.rst) for all the release notes.
+See `Changelog <CHANGELOG.rst>`_ for all the release notes.
 
 License
 =======
