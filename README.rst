@@ -9,10 +9,6 @@
 
 This is an unofficial Python SDK for Valitor (formerly AltaPay/Pensio), https://altapay.com/. The SDK is maintained by Coolshop.com, https://www.coolshop.com/.
 
-Documentation
-=============
-`Documentation is available at Read the Docs <http://altapay.readthedocs.org/en/latest/>`_.
-
 Requirements
 ============
 - Python (3.5, 3.6, 3.7, 3.8)
@@ -57,3 +53,22 @@ For running integration tests, go to test/integration/__init__.py and set all re
 Then run the below command
 
 `python3 -m unittest test_merchant_api.py`
+
+Changelog
+=========
+
+See [Changelog](CHANGELOG.rst) for all the release notes.
+
+License
+=======
+
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
+
+Documentation
+=============
+
+For more details please see [AltaPay docs](http://altapay.readthedocs.org/en/latest/)
+
+Contact
+=======
+Feel free to contact our support team (support@altapay.com) if you need any assistance.
