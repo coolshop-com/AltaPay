@@ -29,10 +29,6 @@ The easiest way is using pip.
 
     pip install altapay
 
-Getting Started
-===============
-Refer to the `introduction on the documentation <http://altapay.readthedocs.org/en/latest/>`_ for some getting started use cases.
-
 Contributing
 ============
 Currently, this library only implements the bare minimum of the AltaPay API. It will allow you to create payment links, and do basic subscription functionality. If you need anything else, feel free to submit a full request, or if you have ideas, open an issue.
