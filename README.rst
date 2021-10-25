@@ -11,7 +11,7 @@ This is an unofficial Python SDK for Valitor (formerly AltaPay/Pensio), https://
 
 Requirements
 ============
-- Python (3.5, 3.6, 3.7, 3.8)
+- Python (3.6, 3.7, 3.8, 3.9)
 
 Other versions of Python may also be supported, but these are the only versions we test against.
 
@@ -37,7 +37,22 @@ If you do decide to submit a pull request, do note that both isort and flake8 (i
 
 Running the Tests
 +++++++++++++++++
-First of all, have `tox <http://tox.readthedocs.org/en/latest/>`_ installed on your system. System-wide is probably the better choice. Once you have tox installed, simply run:
+First of all, install supported python versions by running below command
+
+
+.. code:: python
+
+sudo add-apt-repository -y ppa:deadsnakes/ppa && sudo apt-get install -y python3.6 python3.7 python3.8 python3.9
+
+For installing dependencies run below commands
+
+
+.. code:: python
+
+python -m pip install --upgrade pip && pip install responses requests six isort flake8 nose tox
+
+Finally have `tox <http://tox.readthedocs.org/en/latest/>`_ installed on your system. System-wide is probably the better choice. Once you have tox installed, simply run:
+
 
 .. code:: python
 
@@ -45,10 +60,13 @@ First of all, have `tox <http://tox.readthedocs.org/en/latest/>`_ installed on y
 
 This will run all tests, against all supported Python versions.
 
-For running integration tests, go to test/integration/__init__.py and set all required values.
+For running integration tests only, go to test/integration/__init__.py and set all required values.
 Then run the below command
 
-`python3 -m unittest test_merchant_api.py`
+
+.. code:: python
+
+python3 -m unittest test_merchant_api.py
 
 Changelog
 =========
