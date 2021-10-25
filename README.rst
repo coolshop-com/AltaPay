@@ -60,7 +60,7 @@ Finally have `tox <http://tox.readthedocs.org/en/latest/>`_ installed on your sy
 
 This will run all tests, against all supported Python versions.
 
-For running integration tests only, go to test/integration/__init__.py and set all required values.
+For running integration tests only, go to **test/integration/__init__.py** and set all required values.
 Then run the below command
 
 
