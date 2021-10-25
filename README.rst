@@ -42,14 +42,14 @@ First of all, install supported python versions by running below command
 
 .. code:: python
 
-sudo add-apt-repository -y ppa:deadsnakes/ppa && sudo apt-get install -y python3.6 python3.7 python3.8 python3.9
+    sudo add-apt-repository -y ppa:deadsnakes/ppa && sudo apt-get install -y python3.6 python3.7 python3.8 python3.9
 
 For installing dependencies run below commands
 
 
 .. code:: python
 
-python -m pip install --upgrade pip && pip install responses requests six isort flake8 nose tox
+    python -m pip install --upgrade pip && pip install responses requests six isort flake8 nose tox
 
 Finally have `tox <http://tox.readthedocs.org/en/latest/>`_ installed on your system. System-wide is probably the better choice. Once you have tox installed, simply run:
 
@@ -66,7 +66,7 @@ Then run the below command
 
 .. code:: python
 
-python3 -m unittest test_merchant_api.py
+    python3 -m unittest test_merchant_api.py
 
 Changelog
 =========
