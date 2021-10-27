@@ -1,6 +1,17 @@
 Change Log
 ----------
 
+1.5.1
++++++++++++++++++++++
+
+**Features**
+
+- Added support for Python version 3.9.x
+
+**Python support**
+
+- Python versions below 3.6 are no longer supported.
+
 1.5.0 (2021-07-30)
 +++++++++++++++++++++
 
@@ -23,7 +34,7 @@ Change Log
 1.4.1 (2019-06-26)
 ++++++++++++++++++
 
-** Python support **
+**Python support**
 
 - As of version 1.4.0, Python versions below 3.5 are no longer supported.
 
@@ -51,7 +62,7 @@ Change Log
 1.2.0 (2016-04-19)
 ++++++++++++++++++
 
-**Features***
+**Features**
 
 - Added ``altapay.FundingList`` and ``altapay.Funding``. These two objects will interact with the funding list features of AltaPay, and will allow you to both list all of your funding files, as well as download individual files. Currently no guide section is written on the subject, but full API documentation is available
 - Added ``altapay.CustomReport`` which mimics the custom reporting module of AltaPay. Using a custom report ID and additional kwargs based on the report, you can either view or download your custom reports

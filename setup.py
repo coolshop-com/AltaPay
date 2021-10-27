@@ -36,7 +36,7 @@ setup(
     version=version,
     url=github_url,
     license='MIT',
-    description='Unofficial Python SDK for Valitor (formerly AltaPay/Pensio).',
+    description='Unofficial Python SDK for AltaPay (formerly Valitor/Pensio).',
     long_description=readme + '\n\n' + changelog,
     author='Coolshop.com',
     author_email='altapaysdk@coolshop.com',
@@ -49,8 +49,8 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8'
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9'
     ])
