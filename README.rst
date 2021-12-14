@@ -82,7 +82,3 @@ Documentation
 =============
 
 For more details please see `AltaPay docs <http://altapay.readthedocs.org/en/latest/>`_
-
-Contact
-=======
-Feel free to contact our support team (support@altapay.com) if you need any assistance.
