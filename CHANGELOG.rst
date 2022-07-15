@@ -1,6 +1,14 @@
 Change Log
 ----------
 
+1.5.2
++++++++++++++++++++++
+
+**Features**
+
+- Add support for new 'Agreements Engine' parameters
+- Add support for Apple Pay
+
 1.5.1
 +++++++++++++++++++++
 
