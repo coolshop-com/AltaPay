@@ -34,6 +34,23 @@ class APITest(unittest.TestCase):
         self.assertIn('url', payment)
         self.assertEqual(len(payment.url) > 0, True)
 
+    def test_create_payment_request_with_agreement(self):
+        payment = Payment(api=self.api)
+        params = {
+            'terminal': altapay_test_terminal_name,
+            'shop_orderid': generate_order_id(),
+            'amount': 1.00,
+            'currency': 'EUR',
+            'type': 'subscription',
+            'agreement': {
+                'type': 'unscheduled',
+                'unscheduled_type': 'incremental'
+            }
+        }
+        self.assertEqual(payment.create(**params), True)
+        self.assertIn('url', payment)
+        self.assertEqual(len(payment.url) > 0, True)
+
     def test_create_moto_reservation(self):
         reservation = Reservation(api=self.api)
         date_today = date.today()
@@ -51,6 +68,28 @@ class APITest(unittest.TestCase):
         self.assertEqual(reservation.create(**params), True)
         self.assertEqual(reservation.success, True)
 
+    def test_create_moto_reservation_with_agreement(self):
+        reservation = Reservation(api=self.api)
+        date_today = date.today()
+        params = {
+            'terminal': altapay_test_terminal_name,
+            'shop_orderid': generate_order_id(),
+            'amount': '25',
+            'currency': 'DKK',
+            'cardnum': '4111000011110002',
+            'emonth': date_today.month,
+            'eyear': date_today.year + 1,
+            'cvc': '123',
+            'type': 'subscription',
+            'agreement': {
+                'type': 'unscheduled',
+                'unscheduled_type': 'incremental'
+            }
+        }
+
+        self.assertEqual(reservation.create(**params), True)
+        self.assertEqual(reservation.success, True)
+
     def test_reservation_capture(self):
         reservation = Reservation(api=self.api)
         date_today = date.today()
@@ -63,6 +102,57 @@ class APITest(unittest.TestCase):
             'emonth': date_today.month,
             'eyear': date_today.year + 1,
             'cvc': '123'
+        }
+
+        reservation.create(**params)
+        # parse transaction from reservation response object
+        transaction = list(reservation.__data__.values())[1]["transaction"]
+        # find existing transaction on payment gateway by transaction id
+        trans = Transaction.find(transaction['transaction_id'], api=self.api)
+        # define params for advanced transaction - can be empty
+        transaction_params = {
+            'transaction_id': transaction["transaction_id"],
+            'reconciliation_identifier': transaction["shop_order_id"],
+            'invoice_number': transaction["shop_order_id"],
+            'orderLines': [
+                {
+                    'description': 'Description of the order line',
+                    'itemId': generate_order_id(),
+                    'quantity': 1,
+                    'unitPrice': 500,
+                    'taxAmount': 1000,
+                    'taxPercent': 80
+                },
+                {
+                    'description': 'Description of the order line2',
+                    'itemId': generate_order_id(),
+                    'quantity': 200,
+                    'unitPrice': 3,
+                    'taxAmount': 10,
+                    'taxPercent': 2
+                }
+            ]
+        }
+        # capture existing transaction with defined params
+        self.assertEqual(trans.capture(**transaction_params).result, 'Success')
+
+    def test_reservation_capture_with_agreement(self):
+        reservation = Reservation(api=self.api)
+        date_today = date.today()
+        params = {
+            'terminal': altapay_test_terminal_name,
+            'shop_orderid': generate_order_id(),
+            'amount': '25',
+            'currency': 'DKK',
+            'cardnum': '4111000011110002',
+            'emonth': date_today.month,
+            'eyear': date_today.year + 1,
+            'cvc': '123',
+            'type': 'subscription',
+            'agreement': {
+                'type': 'unscheduled',
+                'unscheduled_type': 'incremental'
+            }
         }
 
         reservation.create(**params)
@@ -202,8 +292,10 @@ class APITest(unittest.TestCase):
             'emonth': date_today.month,
             'eyear': date_today.year + 1,
             'cvc': '123',
-            'type': 'subscription',
-            'agreement_type': 'recurring'
+            'agreement': {
+                'type': 'unscheduled',
+                'unscheduled_type': 'incremental'
+            }
         }
         reservation.create(**params)
         # parse transaction from reservation response object
@@ -212,7 +304,10 @@ class APITest(unittest.TestCase):
 
         transaction = Transaction.find(transaction_id, self.api)
         transaction_params = {
-            'transaction_id': transaction_id,
+            'agreement': {
+                'id': transaction_id,
+                'unscheduled_type': 'incremental'
+            },
             'reconciliation_identifier': order_id,
             'amount': '21',
             'currency': 'DKK'
@@ -234,7 +329,10 @@ class APITest(unittest.TestCase):
             'eyear': date_today.year + 1,
             'cvc': '123',
             'type': 'subscription',
-            'agreement_type': 'recurring'
+            'agreement': {
+                'type': 'unscheduled',
+                'unscheduled_type': 'incremental'
+            }
         }
         reservation.create(**params)
         # parse transaction from reservation response object
@@ -243,7 +341,10 @@ class APITest(unittest.TestCase):
 
         transaction = Transaction.find(transaction_id, self.api)
         transaction_params = {
-            'transaction_id': transaction_id,
+            'agreement': {
+                'id': transaction_id,
+                'unscheduled_type': 'incremental',
+            },
             'amount': '21',
             'currency': 'DKK'
         }
