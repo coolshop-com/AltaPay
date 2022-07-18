@@ -39,7 +39,7 @@ class APITest(unittest.TestCase):
         params = {
             'terminal': altapay_test_terminal_name,
             'shop_orderid': generate_order_id(),
-            'amount': 1.00,
+            'amount': 7.00,
             'currency': 'EUR',
             'type': 'subscription',
             'agreement': {
@@ -74,7 +74,7 @@ class APITest(unittest.TestCase):
         params = {
             'terminal': altapay_test_terminal_name,
             'shop_orderid': generate_order_id(),
-            'amount': '25',
+            'amount': '77',
             'currency': 'DKK',
             'cardnum': '4111000011110002',
             'emonth': date_today.month,
@@ -102,57 +102,6 @@ class APITest(unittest.TestCase):
             'emonth': date_today.month,
             'eyear': date_today.year + 1,
             'cvc': '123'
-        }
-
-        reservation.create(**params)
-        # parse transaction from reservation response object
-        transaction = list(reservation.__data__.values())[1]["transaction"]
-        # find existing transaction on payment gateway by transaction id
-        trans = Transaction.find(transaction['transaction_id'], api=self.api)
-        # define params for advanced transaction - can be empty
-        transaction_params = {
-            'transaction_id': transaction["transaction_id"],
-            'reconciliation_identifier': transaction["shop_order_id"],
-            'invoice_number': transaction["shop_order_id"],
-            'orderLines': [
-                {
-                    'description': 'Description of the order line',
-                    'itemId': generate_order_id(),
-                    'quantity': 1,
-                    'unitPrice': 500,
-                    'taxAmount': 1000,
-                    'taxPercent': 80
-                },
-                {
-                    'description': 'Description of the order line2',
-                    'itemId': generate_order_id(),
-                    'quantity': 200,
-                    'unitPrice': 3,
-                    'taxAmount': 10,
-                    'taxPercent': 2
-                }
-            ]
-        }
-        # capture existing transaction with defined params
-        self.assertEqual(trans.capture(**transaction_params).result, 'Success')
-
-    def test_reservation_capture_with_agreement(self):
-        reservation = Reservation(api=self.api)
-        date_today = date.today()
-        params = {
-            'terminal': altapay_test_terminal_name,
-            'shop_orderid': generate_order_id(),
-            'amount': '25',
-            'currency': 'DKK',
-            'cardnum': '4111000011110002',
-            'emonth': date_today.month,
-            'eyear': date_today.year + 1,
-            'cvc': '123',
-            'type': 'subscription',
-            'agreement': {
-                'type': 'unscheduled',
-                'unscheduled_type': 'incremental'
-            }
         }
 
         reservation.create(**params)
@@ -292,6 +241,7 @@ class APITest(unittest.TestCase):
             'emonth': date_today.month,
             'eyear': date_today.year + 1,
             'cvc': '123',
+            'type': 'subscription',
             'agreement': {
                 'type': 'unscheduled',
                 'unscheduled_type': 'incremental'
@@ -316,13 +266,14 @@ class APITest(unittest.TestCase):
 
         self.assertEqual(capture_result.result, "Success")
 
-    def test_reverse_subscription_charge(self):
+    def test_reserve_subscription_charge_with_agreement_and_capture(self):
         reservation = Reservation(api=self.api)
         date_today = date.today()
+        order_id = generate_order_id()
         params = {
             'terminal': altapay_test_terminal_name,
-            'shop_orderid': generate_order_id(),
-            'amount': '25',
+            'shop_orderid': order_id,
+            'amount': '7777',
             'currency': 'DKK',
             'cardnum': '4111000011110002',
             'emonth': date_today.month,
@@ -345,12 +296,20 @@ class APITest(unittest.TestCase):
                 'id': transaction_id,
                 'unscheduled_type': 'incremental',
             },
-            'amount': '21',
+            'amount': '7777',
             'currency': 'DKK'
         }
         resp = transaction.reserve_subscription_charge(**transaction_params)
 
         self.assertEqual(resp.result, "Success")
+
+        c_t_params = {
+            'transaction_id': transaction_id,
+            'amount': 7777
+        }
+
+        # capture existing transaction with defined params
+        self.assertEqual(transaction.capture(**c_t_params).result, 'Success')
 
     def test_funding_list(self):
         funding_list = FundingList(api=self.api)
