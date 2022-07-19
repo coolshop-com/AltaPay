@@ -303,6 +303,12 @@ class APITest(unittest.TestCase):
 
         self.assertEqual(resp.result, "Success")
 
+        for t in resp.transactions():
+            if t.auth_type == 'subscription_payment':
+                transaction_id = t.transaction_id
+                break
+        transaction = Transaction.find(transaction_id, self.api)
+
         c_t_params = {
             'transaction_id': transaction_id,
             'amount': 7777
