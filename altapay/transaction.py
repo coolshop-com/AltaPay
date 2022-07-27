@@ -96,7 +96,9 @@ class Transaction(Resource):
         :rtype: :py:class:`altapay.Callback` object.
         """
         parameters = {
-            'transaction_id': self.transaction_id
+            'agreement': {
+                'id': self.transaction_id
+            }
         }
 
         parameters.update(kwargs)
@@ -122,7 +124,9 @@ class Transaction(Resource):
         :rtype: :py:class:`altapay.Callback` object.
         """
         parameters = {
-            'transaction_id': self.transaction_id
+            'agreement': {
+                'id': self.transaction_id
+            }
         }
 
         parameters.update(kwargs)

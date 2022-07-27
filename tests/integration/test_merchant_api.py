@@ -34,6 +34,23 @@ class APITest(unittest.TestCase):
         self.assertIn('url', payment)
         self.assertEqual(len(payment.url) > 0, True)
 
+    def test_create_payment_request_with_agreement(self):
+        payment = Payment(api=self.api)
+        params = {
+            'terminal': altapay_test_terminal_name,
+            'shop_orderid': generate_order_id(),
+            'amount': 7.00,
+            'currency': 'EUR',
+            'type': 'subscription',
+            'agreement': {
+                'type': 'unscheduled',
+                'unscheduled_type': 'incremental'
+            }
+        }
+        self.assertEqual(payment.create(**params), True)
+        self.assertIn('url', payment)
+        self.assertEqual(len(payment.url) > 0, True)
+
     def test_create_moto_reservation(self):
         reservation = Reservation(api=self.api)
         date_today = date.today()
@@ -46,6 +63,28 @@ class APITest(unittest.TestCase):
             'emonth': date_today.month,
             'eyear': date_today.year + 1,
             'cvc': '123'
+        }
+
+        self.assertEqual(reservation.create(**params), True)
+        self.assertEqual(reservation.success, True)
+
+    def test_create_moto_reservation_with_agreement(self):
+        reservation = Reservation(api=self.api)
+        date_today = date.today()
+        params = {
+            'terminal': altapay_test_terminal_name,
+            'shop_orderid': generate_order_id(),
+            'amount': '77',
+            'currency': 'DKK',
+            'cardnum': '4111000011110002',
+            'emonth': date_today.month,
+            'eyear': date_today.year + 1,
+            'cvc': '123',
+            'type': 'subscription',
+            'agreement': {
+                'type': 'unscheduled',
+                'unscheduled_type': 'incremental'
+            }
         }
 
         self.assertEqual(reservation.create(**params), True)
@@ -203,7 +242,10 @@ class APITest(unittest.TestCase):
             'eyear': date_today.year + 1,
             'cvc': '123',
             'type': 'subscription',
-            'agreement_type': 'recurring'
+            'agreement': {
+                'type': 'unscheduled',
+                'unscheduled_type': 'incremental'
+            }
         }
         reservation.create(**params)
         # parse transaction from reservation response object
@@ -212,7 +254,10 @@ class APITest(unittest.TestCase):
 
         transaction = Transaction.find(transaction_id, self.api)
         transaction_params = {
-            'transaction_id': transaction_id,
+            'agreement': {
+                'id': transaction_id,
+                'unscheduled_type': 'incremental'
+            },
             'reconciliation_identifier': order_id,
             'amount': '21',
             'currency': 'DKK'
@@ -221,20 +266,24 @@ class APITest(unittest.TestCase):
 
         self.assertEqual(capture_result.result, "Success")
 
-    def test_reverse_subscription_charge(self):
+    def test_reserve_subscription_charge_with_agreement_and_capture(self):
         reservation = Reservation(api=self.api)
         date_today = date.today()
+        order_id = generate_order_id()
         params = {
             'terminal': altapay_test_terminal_name,
-            'shop_orderid': generate_order_id(),
-            'amount': '25',
+            'shop_orderid': order_id,
+            'amount': '7777',
             'currency': 'DKK',
             'cardnum': '4111000011110002',
             'emonth': date_today.month,
             'eyear': date_today.year + 1,
             'cvc': '123',
             'type': 'subscription',
-            'agreement_type': 'recurring'
+            'agreement': {
+                'type': 'unscheduled',
+                'unscheduled_type': 'incremental'
+            }
         }
         reservation.create(**params)
         # parse transaction from reservation response object
@@ -243,13 +292,30 @@ class APITest(unittest.TestCase):
 
         transaction = Transaction.find(transaction_id, self.api)
         transaction_params = {
-            'transaction_id': transaction_id,
-            'amount': '21',
+            'agreement': {
+                'id': transaction_id,
+                'unscheduled_type': 'incremental',
+            },
+            'amount': '7777',
             'currency': 'DKK'
         }
         resp = transaction.reserve_subscription_charge(**transaction_params)
 
         self.assertEqual(resp.result, "Success")
+
+        for t in resp.transactions():
+            if t.auth_type == 'subscription_payment':
+                transaction_id = t.transaction_id
+                break
+        transaction = Transaction.find(transaction_id, self.api)
+
+        c_t_params = {
+            'transaction_id': transaction_id,
+            'amount': 7777
+        }
+
+        # capture existing transaction with defined params
+        self.assertEqual(transaction.capture(**c_t_params).result, 'Success')
 
     def test_funding_list(self):
         funding_list = FundingList(api=self.api)
