@@ -29,5 +29,5 @@ class Reservation(Payment):
 
     @property
     def success(self):
-        return self.error_code == 0 and (self.result == 'Success'
-                                         or self.result == 'Redirect')
+        return self.error_code == 0 and \
+            (self.result == 'Success' or self.result == 'Redirect')
