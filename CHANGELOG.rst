@@ -1,6 +1,13 @@
 Change Log
 ----------
 
+1.5.3
++++++++++++++++++++++
+
+**Features**
+
+- Add redirect response as success in reservation
+
 1.5.2
 +++++++++++++++++++++
 
