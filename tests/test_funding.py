@@ -14,7 +14,7 @@ class FundingListTest(TestCase):
     def setUp(self):
         self.api = API(mode='test', auto_login=False)
         responses.add(
-            responses.POST, self.get_api_url('API/fundingList/'),
+            responses.GET, self.get_api_url('API/fundingList/'),
             body=self.load_xml_response('200_funding_list_page_0.xml'),
             status=200, content_type='application/xml')
         self.funding_list = FundingList(api=self.api)
@@ -30,7 +30,7 @@ class FundingListTest(TestCase):
     @responses.activate
     def test_next_page(self):
         responses.add(
-            responses.POST, self.get_api_url('API/fundingList/'),
+            responses.GET, self.get_api_url('API/fundingList/'),
             body=self.load_xml_response('200_funding_list_page_0.xml'),
             status=200, content_type='application/xml')
         self.assertEqual(self.funding_list._current_page, 0)
@@ -48,7 +48,7 @@ class FundingTest(TestCase):
     def setUp(self):
         self.api = API(mode='test', auto_login=False)
         responses.add(
-            responses.POST, self.get_api_url('API/fundingList/'),
+            responses.GET, self.get_api_url('API/fundingList/'),
             body=self.load_xml_response('200_funding_list_page_0.xml'),
             status=200, content_type='application/xml')
         self.funding_list = FundingList(api=self.api)

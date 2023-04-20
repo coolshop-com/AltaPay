@@ -24,7 +24,7 @@ jobs:
           pip install responses requests six isort flake8 nose tox
       
       - name: Create config for integration tests
-        run: 'echo altapay_account=\"${{secrets.GATEWAYUSER}}\" > __init__.py && echo altapay_password=\"${{secrets.GATEWAYPASS}}\" >> __init__.py && echo altapay_url=\"${{secrets.GATEWAYURL}}/merchant/\" >> __init__.py && echo altapay_test_terminal_name=\"${{secrets.CC_TERMINAL_NAME}}\" >> __init__.py && echo altapay_invoice_test_terminal_name=\"${{ secrets.INVOICE_TERMINAL_NAME}}\" >> __init__.py && echo altapay_contract_identifier=\"${{ secrets.GATEWAY_CONTRACT_IDENTIFIER }}\" >> __init__.py && cat __init__.py'
+        run: 'echo altapay_account=\"${{secrets.GATEWAYUSER}}\" > __init__.py && echo altapay_password=\"${{secrets.GATEWAYPASS}}\" >> __init__.py && echo altapay_url=\"${{secrets.GATEWAYURL}}/merchant/\" >> __init__.py && echo altapay_test_terminal_name=\"${{secrets.CC_TERMINAL_NAME}}\" >> __init__.py && echo altapay_invoice_test_terminal_name=\"${{ secrets.INVOICE_TERMINAL_NAME}}\" >> __init__.py && echo altapay_contract_identifier=\"${{ secrets.GATEWAY_CONTRACT_IDENTIFIER }}\" >> __init__.py'
         working-directory: tests/integration  
       
       - name: Run tests with tox

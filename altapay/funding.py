@@ -90,8 +90,8 @@ class FundingList(object):
         self._load_page()
 
     def _load_page(self):
-        response = self._api.post(
-            'API/fundingList/', data={'page': self._current_page}
+        response = self._api.get(
+            'API/fundingList/', parameters={'page': self._current_page}
         )['APIResponse']
         callback = Callback.from_xml_callback(response)
         self._fundings = [

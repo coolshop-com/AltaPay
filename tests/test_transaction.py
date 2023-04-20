@@ -15,7 +15,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_find_transaction_failure(self):
         responses.add(
-            responses.POST, self.get_api_url('API/payments'),
+            responses.GET, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_failure.xml'),
             status=200, content_type='application/xml')
 
@@ -25,7 +25,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_find_transaction_success(self):
         responses.add(
-            responses.POST, self.get_api_url('API/payments'),
+            responses.GET, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_single.xml'),
             status=200, content_type='application/xml')
 
@@ -39,7 +39,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_find_transaction_multiple_resources_error(self):
         responses.add(
-            responses.POST, self.get_api_url('API/payments'),
+            responses.GET, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_multiple.xml'),
             status=200, content_type='application/xml')
 
@@ -49,7 +49,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_capture_transaction_simple(self):
         responses.add(
-            responses.POST, self.get_api_url('API/payments'),
+            responses.GET, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_single.xml'),
             status=200, content_type='application/xml')
 
@@ -70,7 +70,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_charge_subscription_single(self):
         responses.add(
-            responses.POST, self.get_api_url('API/payments'),
+            responses.GET, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_single.xml'),
             status=200, content_type='application/xml')
 
@@ -94,7 +94,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_reserve_subscription_single(self):
         responses.add(
-            responses.POST, self.get_api_url('API/payments'),
+            responses.GET, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_single.xml'),
             status=200, content_type='application/xml')
 
@@ -118,7 +118,7 @@ class PaymentTest(TestCase):
     @responses.activate
     def test_release_reservation(self):
         responses.add(
-            responses.POST, self.get_api_url('API/payments'),
+            responses.GET, self.get_api_url('API/payments'),
             body=self.load_xml_response('200_find_transaction_single.xml'),
             status=200, content_type='application/xml')
 

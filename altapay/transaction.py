@@ -17,8 +17,8 @@ class Transaction(Resource):
 
         :rtype: :py:class:`altapay.Transaction`
         """
-        response = api.post(
-            'API/payments', data={'transaction_id': transaction_id}
+        response = api.get(
+            'API/payments', parameters={'transaction_id': transaction_id}
         )['APIResponse']
 
         try:
